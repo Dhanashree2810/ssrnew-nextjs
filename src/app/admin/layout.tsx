@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
-import NavbarPage from "@/components/custom/Navbar";
+import { ReactNode } from "react"; 
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -16,8 +14,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SSR",
-  description: "ssrnew.wazl.in",
+  title: "DIW Admin",
+  description: "diw.wazl.in",
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -26,17 +24,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen overflow-y-auto bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased flex flex-col h-[100dvh]",
           poppins.variable
         )}
       >
-        <div className="flex flex-col min-h-screen overflow-y-auto">        
-          <NavbarPage />
-          <main className="flex flex-1 flex-col  bg-gray-50">
-            {children}
-          </main>
-        </div>
-      </body>
-    </html>
-  );
-}
+        <main>
+          {children}
+        </main>
+      </body >
+    </html >
+  )
+};

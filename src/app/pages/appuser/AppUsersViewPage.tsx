@@ -99,9 +99,9 @@ export default function AppUsersViewPage(props: any) {
     }`;
 
   return (
-    <div className="relative h-screen flex flex-col">
+    <div className="relative h-screen flex flex-col p-4">
       <div className=" flex items-center pb-2">
-        <Link href="/admin/appuser/">
+        <Link href="/">
           <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mr-5" />
         </Link>
         <h1 className=" capitalize text-lg font-bold">
@@ -112,7 +112,7 @@ export default function AppUsersViewPage(props: any) {
       {error ? (
         <div className="text-red-500">{error}</div>
       ) : (
-        <div className="flex flex-col h-full overflow-y-auto border-none mb-28">
+        <div className="flex flex-col h-full overflow-y-auto border-none mb-10">
           <div className="container mx-auto">
             <div className="w-full">
               <TabView

@@ -21,8 +21,6 @@
 }
 
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -116,10 +114,13 @@
     color: #333333; 
   }
 }
-
+/* *{
+  border:1px solid red;
+} */
 body {
-  @apply bg-background text-foreground overflow-y-hidden overflow-x-hidden ;
+  @apply bg-background text-foreground;
   @apply font-sans;
+  overflow-x: hidden !important;
 }
 
 .p-datatable {

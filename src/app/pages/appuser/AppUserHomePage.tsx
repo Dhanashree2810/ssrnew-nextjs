@@ -19,12 +19,6 @@ export default function AppUserHomePage(props: any) {
     const listHtmlData = props?.htmlData;
     const listHomeUserData = props?.listHomeUserData;
 
-    console.log("summaryData", summaryData);
-    console.log("topData", topData);
-    console.log("listHtmlData", listHtmlData);
-    console.log("listHomeUserData", listHomeUserData);
-
-
     const itemTemplate = (item: any) => {
         return (
             <div className="product-item">
@@ -55,9 +49,9 @@ export default function AppUserHomePage(props: any) {
 
 
     return (
-        <div className='relative h-screen flex flex-col'>
-            <div className="flex flex-col h-full overflow-y-auto border-none mb-20">
-                <section className="p-2">
+        <div className="relative h-screen flex flex-col p-5">
+            <div className="flex flex-col h-full overflow-y-auto border-none mb-10">
+                <section className="p-2 lg:ml-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5">
                         <div className="bg-white shadow p-5 border border-gray-200 rounded">
                             <div className="flex justify-between mb-3">
@@ -110,8 +104,8 @@ export default function AppUserHomePage(props: any) {
                     </div>
                 </section>
 
-                <section className="flex items-center justify-center my-5">
-                    <Link href="/admin/appuser/">
+                <section className="p-2 flex items-center justify-center my-5">
+                    <Link href="/">
                         <Button
                             label="View all AppUsers"
                             className="p-button-raised p-button-rounded rounded-md bg-green-700 text-white p-4"
@@ -134,7 +128,7 @@ export default function AppUserHomePage(props: any) {
                     )}
                 </section>
 
-                <section className="p-2">
+                <section className="p-2 lg:mb-10">
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                         <div className="bg-white shadow-md rounded p-4">
                             <div className="flex justify-between items-center mb-5">
@@ -229,8 +223,8 @@ export default function AppUserHomePage(props: any) {
 
                 {listHomeCommonData?.lastData?.length > 0 && (
                     <section className="p-2">
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                            {listHomeCommonData.lastData.slice(0, 3).map((item: any, index: any) => (
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                            {listHomeCommonData.lastData.slice(0, 4).map((item: any, index: any) => (
                                 <Card key={index} className="shadow-md text-center p-5">
                                     <img
                                         src={`https://www.primefaces.org/primeblocks-ng/assets/images/blocks/illustration/${index === 0 ? 'windows' : index === 1 ? 'security' : 'live-collaboration'}.svg`}
