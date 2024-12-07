@@ -8,7 +8,7 @@ export default async function page() {
   const listHomeUserData = await getHomeUserData();
 
   return (
-    <div>
+    <div className=' bg-[#F6F6F6]'>
       <AppUserHomePage listHomeCommonData={listHomeCommonData} htmlData={htmlData} listHomeUserData={listHomeUserData}/>
     </div>
   )
