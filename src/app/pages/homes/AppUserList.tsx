@@ -60,7 +60,7 @@ export default function AppUserList(props: any) {
                   </Button>
                 </Link>
               </div>
-              <span className="bg-blue-100 text-blue-700 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
+              <span className="bg-gradient-to-r from-[#9333EA] to-[#609AF8] text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                 {user.state}
               </span>
             </div>
@@ -83,7 +83,7 @@ export default function AppUserList(props: any) {
       return itemTemplate(product, index);
     });
 
-    return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-10">{list}</div>;
+    return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-10">{list}</div>;
   };
 
   return (

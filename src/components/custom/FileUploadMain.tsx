@@ -105,26 +105,29 @@ function FileUploadMain({
         <div className="file-attachments">
             <ul>
                 {uploadedFiles.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                        {
-                            uploadedFiles.map((file) => (
-                                <li key={file.filePath} className=" relative flex flex-col items-center cursor-pointer">
-                                    <div className="relative flex items-center justify-center rounded pb-2">
-                                        <div className="rounded border border-gray-500 p-3  w-[450px]"  onClick={() => downloadFile(file)} >                                         
-                                            <span className="text-sm font-medium">{file.fileName}</span>
-                                        </div>
-                                        <Button
-                                            onClick={() => deleteAttachment(file)}
-                                            className="absolute -top-1 -right-4 text-white  rounded-full bg-black" 
-                                        >
-                                            <RiDeleteBin6Fill className=' h-4 w-4' />
-                                        </Button>
+                    <div className="flex flex-wrap gap-4">
+                        {uploadedFiles.map((file) => (
+                            <li key={file.filePath} className="relative flex flex-col items-center cursor-pointer">
+                                <div className="relative flex flex-col items-center justify-center rounded pb-2 w-full max-w-[450px]">
+                                    <div
+                                        className="rounded border border-gray-500 p-2 w-full text-center"
+                                        onClick={() => downloadFile(file)}
+                                    >
+                                        <span className="text-xs font-medium">{file.fileName}</span>
                                     </div>
-                                </li>
-                            ))}
+                                    <div
+                                        onClick={() => deleteAttachment(file)}
+                                        className="absolute -top-2 -right-4 text-black flex items-center justify-center h-8 w-8"
+                                    >
+                                        <RiDeleteBin6Fill className="h-4 w-4 text-black" />
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
                     </div>
                 )}
             </ul>
+
 
             <label className="p-3 flex justify-center items-center text-center border border-green-700 rounded cursor-pointer bg-gray-100">
                 <span>
@@ -134,7 +137,7 @@ function FileUploadMain({
                     type="file"
                     accept={accept}
                     onChange={handleFileUpload}
-                    className="hidden"  // Hides the input for custom styling
+                    className="hidden"
                     multiple={multiple}
                 />
             </label>

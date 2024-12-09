@@ -10,7 +10,7 @@ export default async function page() {
 
   return (
     <Layout criteria={true}>
-      <div className=' bg-[#F6F6F6] lg:mt-28'>
+      <div className=' bg-[#F6F6F6] mt-24 lg:mt-28'>
         <AppUserHomePage listHomeCommonData={listHomeCommonData} htmlData={htmlData} listHomeUserData={listHomeUserData} />
       </div>
     </Layout>

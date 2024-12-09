@@ -13,23 +13,21 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FaEdit } from "react-icons/fa";
-import ImgViewer from "@/components/custom/ImgViewer ";
+import ImgViewer from "@/components/custom/ImgViewer";
 
 
 const parseImageAndSetPreview = (jsonString: any, setImagePreview: any) => {
   try {
     const imgFiles = JSON.parse(jsonString);
     if (imgFiles && imgFiles.length > 0) {
-      const imageUrls = imgFiles.map((imgFile: any) => {
-        const correctedFilePath = imgFile.filePath.replace(/\\/g, '/');
-        return `${process.env.NEXT_PUBLIC_API_URL}/ImportFiles/${correctedFilePath}`;
-      });
-      setImagePreview(imageUrls);
+      const fileNames = imgFiles.map((imgFile: any) => imgFile.fileName);
+      setImagePreview(fileNames);
     }
   } catch (error) {
-    console.error("Failed to parse image URL:", error);
+    console.error("Failed to parse image data:", error);
   }
 };
+
 
 export default function AppUsersViewPage(props: any) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -64,6 +62,9 @@ export default function AppUsersViewPage(props: any) {
       if (data.photoShopFront) {
         parseImageAndSetPreview(data.photoShopFront, setPhotoShopFrontPreview);
       }
+
+      console.log("data.visitingCard", data.visitingCard);
+
 
       if (data.visitingCard) {
         parseImageAndSetPreview(data.visitingCard, setVisitingCardPreview);
@@ -349,9 +350,9 @@ export default function AppUsersViewPage(props: any) {
                           </Label>
                           <TooltipWithText text="GstCertificate" />
                         </div>
-                        <div className="flex gap-5 my-5">
-                          {gstCertificatePreview.map((url: string, index: number) => (
-                            <ImgViewer imageShowUrl={url} />
+                        <div className="flex flex-col gap-2 my-5">
+                          {gstCertificatePreview.map((fileName: string, index: number) => (
+                            <ImgViewer key={index} imageFileName={fileName} />
                           ))}
                         </div>
                       </div>
@@ -363,9 +364,9 @@ export default function AppUsersViewPage(props: any) {
                           </Label>
                           <TooltipWithText text="Photo Shop From Front" />
                         </div>
-                        <div className="flex gap-5 my-5">
-                          {photoShopFrontPreview.map((url: string, index: number) => (
-                            <ImgViewer imageShowUrl={url} />
+                        <div className="flex flex-col gap-2 my-5">
+                          {photoShopFrontPreview.map((fileName: string, index: number) => (
+                            <ImgViewer key={index} imageFileName={fileName} />
                           ))}
                         </div>
                       </div>
@@ -379,9 +380,9 @@ export default function AppUsersViewPage(props: any) {
                           </Label>
                           <TooltipWithText text="VisitingCard" />
                         </div>
-                        <div className="flex gap-5 my-5">
-                          {visitingCardPreview.map((url: string, index: number) => (
-                            <ImgViewer imageShowUrl={url} />
+                        <div className="flex flex-col gap-2 my-5">
+                          {visitingCardPreview.map((fileName: string, index: number) => (
+                            <ImgViewer key={index} imageFileName={fileName} />
                           ))}
                         </div>
                       </div>
@@ -393,9 +394,9 @@ export default function AppUsersViewPage(props: any) {
                           </Label>
                           <TooltipWithText text="Cheque" />
                         </div>
-                        <div className="flex gap-5 my-5">
-                          {chequePreview.map((url: string, index: number) => (
-                            <ImgViewer imageShowUrl={url} />
+                        <div className="flex flex-col gap-2 my-5">
+                          {chequePreview.map((fileName: string, index: number) => (
+                            <ImgViewer key={index} imageFileName={fileName} />
                           ))}
                         </div>
                       </div>
@@ -453,9 +454,9 @@ export default function AppUsersViewPage(props: any) {
                           </Label>
                           <TooltipWithText text="Photo" />
                         </div>
-                        <div className="flex gap-5 my-5">
-                          {PhotoAttachmentPreview.map((url: string, index: number) => (
-                            <ImgViewer imageShowUrl={url} />
+                        <div className="flex flex-col gap-2 my-2">
+                          {PhotoAttachmentPreview.map((fileName: string, index: number) => (
+                            <ImgViewer key={index} imageFileName={fileName} />
                           ))}
                         </div>
                       </div>

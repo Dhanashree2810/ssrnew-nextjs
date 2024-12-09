@@ -10,6 +10,10 @@ import Link from 'next/link';
 import { CgEye } from "react-icons/cg";
 import { RiFileEditLine } from "react-icons/ri";
 import { FaArrowRight } from "react-icons/fa6";
+import user1 from '@/assets/images/user (1).png'
+import user2 from '@/assets/images/user (2).png'
+import user3 from '@/assets/images/user.png'
+import Image from 'next/image';
 
 
 export default function AppUserHomePage(props: any) {
@@ -21,23 +25,24 @@ export default function AppUserHomePage(props: any) {
 
     const itemTemplate = (item: any) => {
         return (
-            <div className="product-item">
-                <div className="product-item-content p-5 shadow-lg rounded-lg">
+            <div>
+                <div className="p-5 shadow-lg rounded-lg">
                     <div className="mb-3 flex justify-center">
-                        <img
-                            src="https://i.pinimg.com/736x/a3/ed/71/a3ed71def3bc46b89354b0f68f660651.jpg"
+                        <Image
+                            src={user3}
                             alt={item.name}
-                            className="h-48 w-48 object-cover rounded-full"
+                            className="h-32 w-32 object-cover rounded-full"
+                            objectFit='cover'
                         />
                     </div>
                     <div className="text-center">
                         <h4 className="text-lg font-semibold mb-1">{item.name}</h4>
                         <h6 className="text-gray-600 text-sm mb-3">{item.emailId}</h6>
                         <div className="car-buttons flex justify-center gap-3 mt-5">
-                            <Link href={`/appuser/view/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-green-800">
+                            <Link href={`/appuser/view/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]">
                                 <CgEye className=' text-white h-7 w-7' />
                             </Link>
-                            <Link href={`/appuser/edit/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-green-800">
+                            <Link href={`/appuser/edit/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]">
                                 <RiFileEditLine className=' text-white h-7 w-7' />
                             </Link>
                         </div>
@@ -104,11 +109,11 @@ export default function AppUserHomePage(props: any) {
                     </div>
                 </section>
 
-                <section className="p-2 flex items-center justify-center my-5">
-                    <Link href="/">
+                <section className="p-2 flex items-center justify-center my-8">
+                    <Link href="/appuser">
                         <Button
                             label="View all AppUsers"
-                            className="p-button-raised p-button-rounded rounded-md bg-green-700 text-white p-4"
+                            className="p-button-raised p-button-rounded rounded-md bg-gradient-to-r from-[#9333EA] to-[#609AF8] text-white p-4 border-none"
                         />
                     </Link>
                 </section>
@@ -116,7 +121,7 @@ export default function AppUserHomePage(props: any) {
                 <section className="p-2">
                     {topData && (
                         <div>
-                            <h5 className="text-left text-3xl font-bold mb-5">Achievers</h5>
+                            <h5 className="text-left text-2xl lg:text-3xl font-bold mb-5">Achievers</h5>
                             <Carousel
                                 value={topData}
                                 numVisible={3}
@@ -128,27 +133,28 @@ export default function AppUserHomePage(props: any) {
                     )}
                 </section>
 
-                <section className="p-2 lg:mb-10">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                <section className="lg:p-10 lg:mb-10">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-32">
                         <div className="bg-white shadow-md rounded p-4">
                             <div className="flex justify-between items-center mb-5">
-                                <span className="text-xl font-medium">Created by Me</span>
+                                <span className="text-xl font-semibold">Created by Me</span>
                             </div>
-                            <ul className="">
+                            <ul>
                                 {listHomeUserData?.topData?.map((item: any) => (
                                     <li
                                         key={item.name}
-                                        className="flex flex-row items-center justify-between gap-20 mb-4"
+                                        className="flex flex-row items-center justify-between lg:gap-48 mb-8"
                                     >
                                         <div className="flex-shrink-0">
-                                            <img
-                                                src="https://i.pinimg.com/736x/a3/ed/71/a3ed71def3bc46b89354b0f68f660651.jpg"
+                                            <Image
+                                                src={user1}
                                                 alt={item.name}
-                                                className="w-60 h-60 object-cover rounded-full"
+                                                className="w-32 h-32 object-cover rounded-full"
+                                                objectFit='cover'
                                             />
                                         </div>
 
-                                        <div className="flex flex-col justify-between flex-1">
+                                        <div className="flex flex-col justify-between items-start flex-1">
                                             <div>
                                                 <span className="font-medium text-gray-900">{item.name}</span>
                                                 <div className="text-gray-600">{item.emailId}</div>
@@ -156,15 +162,16 @@ export default function AppUserHomePage(props: any) {
                                             <div className="mt-2 flex space-x-2">
                                                 <Link
                                                     href={`/appuser/view/${item.id}`}
-                                                    className="flex items-center justify-center rounded-full p-3 bg-green-800"
+                                                    className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]"
                                                 >
-                                                    <CgEye className="text-white h-7 w-7" />
+                                                    <CgEye className="text-white h-5 w-5" />
                                                 </Link>
+
                                                 <Link
                                                     href={`/appuser/edit/${item.id}`}
-                                                    className="flex items-center justify-center rounded-full p-3 bg-green-800"
+                                                    className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]"
                                                 >
-                                                    <RiFileEditLine className="text-white h-7 w-7" />
+                                                    <RiFileEditLine className="text-white h-5 w-5" />
                                                 </Link>
                                             </div>
                                         </div>
@@ -184,17 +191,18 @@ export default function AppUserHomePage(props: any) {
                                 {listHomeCommonData?.topData?.map((item: any) => (
                                     <li
                                         key={item.name}
-                                        className="flex flex-row items-center justify-between gap-20 mb-4"
+                                        className="flex flex-row items-center justify-between lg:gap-48 mb-8"
                                     >
                                         <div className="flex-shrink-0">
-                                            <img
-                                                src="https://i.pinimg.com/736x/a3/ed/71/a3ed71def3bc46b89354b0f68f660651.jpg"
+                                            <Image
+                                                src={user1}
                                                 alt={item.name}
-                                                className="w-60 h-60 object-cover rounded-full"
+                                                className="w-32 h-32 object-cover rounded-full"
+                                                objectFit='cover'
                                             />
                                         </div>
 
-                                        <div className="flex flex-col justify-between flex-1">
+                                        <div className="flex flex-col justify-center items-start flex-1">
                                             <div>
                                                 <span className="font-medium text-gray-900">{item.name}</span>
                                                 <div className="text-gray-600">{item.emailId}</div>
@@ -202,15 +210,15 @@ export default function AppUserHomePage(props: any) {
                                             <div className="mt-2 flex space-x-2">
                                                 <Link
                                                     href={`/appuser/view/${item.id}`}
-                                                    className="flex items-center justify-center rounded-full p-3 bg-green-800"
+                                                    className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]"
                                                 >
-                                                    <CgEye className="text-white h-7 w-7" />
+                                                    <CgEye className="text-white h-5 w-5" />
                                                 </Link>
                                                 <Link
                                                     href={`/appuser/edit/${item.id}`}
-                                                    className="flex items-center justify-center rounded-full p-3 bg-green-800"
+                                                    className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]"
                                                 >
-                                                    <RiFileEditLine className="text-white h-7 w-7" />
+                                                    <RiFileEditLine className="text-white h-5 w-5" />
                                                 </Link>
                                             </div>
                                         </div>
@@ -222,23 +230,24 @@ export default function AppUserHomePage(props: any) {
                 </section>
 
                 {listHomeCommonData?.lastData?.length > 0 && (
-                    <section className="p-2">
+                    <section className="px-2 lg:px-10">
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
                             {listHomeCommonData.lastData.slice(0, 4).map((item: any, index: any) => (
                                 <Card key={index} className="shadow-md text-center p-5">
-                                    <img
-                                        src={`https://www.primefaces.org/primeblocks-ng/assets/images/blocks/illustration/${index === 0 ? 'windows' : index === 1 ? 'security' : 'live-collaboration'}.svg`}
+                                    <Image
+                                        src={user2}
                                         alt="Image"
-                                        className="mx-auto block mb-4"
+                                        className="mx-auto block mb-4 w-32 h-32"
+                                        objectFit='cover'
                                     />
                                     <div className="text-xl font-medium mb-3 text-gray-900">{item.name}</div>
-                                    <p className="text-gray-600 mb-4">
+                                    <p className="text-gray-600 mb-4 text-sm">
                                         Nunc mi ipsum faucibus vitae aliquet nec. Lacus sed viverra tellus in hac habitasse platea dictumst.
                                     </p>
                                     <div className='flex space-x-2 justify-center'>
                                         <Link
                                             href={`/appuser/view/${item.id}`}
-                                            className="flex items-center text-white rounded-full p-3 bg-green-800 space-x-2"
+                                            className="flex items-center text-white rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8] space-x-2"
                                         >
                                             <FaArrowRight className="w-5 h-5" />
                                             <span>View</span>

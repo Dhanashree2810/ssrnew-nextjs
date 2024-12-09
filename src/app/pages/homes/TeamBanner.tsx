@@ -12,7 +12,7 @@ export default function TeamBanner() {
           width={1920}
           height={1080}
         />
-        <div className="absolute top-10 left-8 sm:top-16 sm:left-16 bg-gradient-to-r from-blue-600 to-indigo-600/90 px-8 py-6 sm:px-16 sm:py-20 rounded-lg shadow-lg animate-fade-in-down">
+        <div className="absolute top-10 left-8 sm:top-16 sm:left-16 bg-gradient-to-r from-[#9333EA] to-[#609AF8] px-8 py-6 sm:px-16 sm:py-20 rounded-lg shadow-lg animate-fade-in-down">
           <h1 className="text-white text-3xl font-semibold tracking-wider">
             User List
           </h1>
