@@ -192,10 +192,18 @@ body {
   animation: loading 1.5s infinite;
 }
 
+.p-tabview-nav-container {
+  background-color: rgb(243 244 246) !important;
+}
+
 .p-tabview-nav-container .p-tabview-nav-content ul{
   background-color: rgb(243 244 246) !important;
 }
 
 .p-tabview-panels{
+  background-color: rgb(243 244 246)  !important;
+}
+
+.p-tabview-nav{
   background-color: rgb(243 244 246)  !important;
 }

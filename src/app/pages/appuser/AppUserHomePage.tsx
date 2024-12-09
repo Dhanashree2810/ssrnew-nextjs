@@ -49,8 +49,8 @@ export default function AppUserHomePage(props: any) {
 
 
     return (
-        <div className="relative h-screen flex flex-col p-5">
-            <div className="flex flex-col h-full overflow-y-auto border-none mb-10">
+        <div className="relative flex flex-col p-5">
+            <div className="flex flex-col border-none mb-10">
                 <section className="p-2 lg:ml-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5">
                         <div className="bg-white shadow p-5 border border-gray-200 rounded">

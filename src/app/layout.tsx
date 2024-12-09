@@ -3,7 +3,11 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-import NavbarPage from "@/components/custom/Navbar";
+import dynamic from "next/dynamic";
+
+const NavbarPage = dynamic(() => import("@/components/custom/Navbar"), {
+  ssr: false,
+});
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -31,7 +35,7 @@ export default function RootLayout({ children, criteria }: RootLayoutProps) {
           poppins.variable
         )}
       >
-        <div className="flex flex-col min-h-screen overflow-y-auto">
+        <div className="flex flex-col">
           {criteria &&
             <NavbarPage />
           }
