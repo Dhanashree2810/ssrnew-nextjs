@@ -14,8 +14,8 @@ import logoText from "@/assets/images/only-text.png";
 export default function NavbarPage() {
   const pathname = usePathname();
   const menuItems = [
-    { href: "/admin/appuser/homes", label: "Dashboard" },
-    { href: "/", label: "List" },
+    { href: "/appuser/homes", label: "Dashboard" },
+    { href: "/appuser", label: "List" },
   ];
 
   const [isMenuOpen, setMenuOpen] = React.useState(false);

@@ -1,15 +1,6 @@
-import { fetchAppUsers } from "@/services/appusers";
-import AppUserList from "./pages/homes/AppUserList";
-import TeamBanner from "./pages/homes/TeamBanner";
 
-export default async function Home() {
+import { redirect } from 'next/navigation';
 
-  const appUserData = await fetchAppUsers();
-
-  return (
-    <>
-     <TeamBanner/>
-     <AppUserList appUserData={appUserData}/>
-    </>
-  );
+export default function Home() {
+  redirect('/appuser');
 }

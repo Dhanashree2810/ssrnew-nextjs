@@ -419,14 +419,14 @@ const AppUserMainForm = ({ appUserData }: any) => {
         <>
             <div className='relative h-screen flex flex-col'>
                 <div className=" flex items-center p-3 bg-black text-white">
-                    <Link href="/admin/appuser/">
+                    <Link href="/appuser/">
                         <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mx-3" />
                     </Link>
                     <h1 className=" capitalize text-[16px] font-bold ">
                         Back to AppUser
                     </h1>
                 </div>
-                <div className="flex flex-col h-full overflow-y-auto border-none mt-10">
+                <div className="flex flex-col h-full overflow-y-auto border-none mt-10 mb-20">
                     <div className="container mx-auto">
                         <form id="myForm" onSubmit={handleSubmit} noValidate>
                             <div className="w-full bg-gray-100">
@@ -926,7 +926,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                         <span className=' font-bold text-lg py-2'>Successfully!</span>
                     </DialogDescription>
                     <DialogFooter>
-                        <Link href='/admin/appuser/'>  <Button onClick={handleCloseDialog} className=' bg-gray-500 text-white font-bold'>OK</Button></Link>
+                        <Link href='/appuser/'>  <Button onClick={handleCloseDialog} className=' bg-gray-500 text-white font-bold'>OK</Button></Link>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

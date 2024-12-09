@@ -1,3 +1,4 @@
+import Layout from '@/app/layout';
 import AppUsersViewPage from '@/app/pages/appuser/AppUsersViewPage'
 import { fetchAppUsers } from '@/services/appusers';
 
@@ -8,8 +9,8 @@ export default async function page({ params }: { params: { id: string } }) {
   const idFltr = appUserData.filter((val: any) => val.id == id);
 
   return (
-    <div>
-    <AppUsersViewPage appUserData={idFltr[0]} />
-    </div>
+    <Layout criteria={false}>
+      <AppUsersViewPage appUserData={idFltr[0]} />
+    </Layout>
   )
 }
