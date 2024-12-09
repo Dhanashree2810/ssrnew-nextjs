@@ -42,7 +42,7 @@ export default function NavbarPage() {
               <Link
                 key={index}
                 href={item.href}
-                className={`text-gray-800 hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''
+                className={`text-gray-800 uppercase font-semibold hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''
                   }`}
               >
                 {item.label}
@@ -79,7 +79,7 @@ export default function NavbarPage() {
                 <Link
                   key={index}
                   href={item.href}
-                  className={`block text-gray-800 hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''
+                  className={`block text-gray-800 uppercase font-semibold hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''
                     }`}
                 >
                   {item.label}

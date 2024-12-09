@@ -24,11 +24,10 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import TooltipWithText from '@/components/custom/TooltipWithText';
 import globalschema from '../../../../globalschema';
-import { addFunAllUsers, updateFunAllUsers } from '@/app/actions/appuser';
 import { Textarea } from '@/components/ui/textarea';
-import { fetchFunEnumDet } from '@/app/actions/enumdetail';
-import { downloadFileAppUser, uploadAppUser } from '@/services/appusers';
+import { addAppUser, downloadFileAppUser, updateAppUser, uploadAppUser } from '@/services/appusers';
 import FileUploadMain from '@/components/custom/FileUploadMain';
+import { fetchEnumDetailsData } from '@/services/enumdetails';
 
 type FileData = {
     gstCertificate: never[];
@@ -74,7 +73,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
 
     const getVerifyShopsData = async () => {
         try {
-            const data = await fetchFunEnumDet();
+            const data = await fetchEnumDetailsData();
             if (data) {
                 const filterShops = data.filter((a: any) => a.section === 'VerifyType');
                 setVerifyShops(filterShops);
@@ -366,9 +365,9 @@ const AppUserMainForm = ({ appUserData }: any) => {
                 if (!formData.id) {
                     throw new Error("ID is required for update.");
                 }
-                response = await updateFunAllUsers({ ...cleanedPayload, id: formData.id });
+                response = await updateAppUser({ ...cleanedPayload, id: formData.id });
             } else {
-                response = await addFunAllUsers(cleanedPayload);
+                response = await addAppUser(cleanedPayload);
             }
 
             if (response) {
@@ -419,29 +418,28 @@ const AppUserMainForm = ({ appUserData }: any) => {
     return (
         <>
             <div className='relative h-screen flex flex-col'>
-                <div className=" flex items-center pb-2">
+                <div className=" flex items-center p-3 bg-black text-white">
                     <Link href="/admin/appuser/">
-                        <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mr-5" />
+                        <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mx-3" />
                     </Link>
-                    <h1 className=" capitalize text-lg font-bold">
+                    <h1 className=" capitalize text-[16px] font-bold ">
                         Back to AppUser
                     </h1>
                 </div>
-                <div className="flex flex-col h-full overflow-y-auto border-none mb-28">
+                <div className="flex flex-col h-full overflow-y-auto border-none mt-10">
                     <div className="container mx-auto">
                         <form id="myForm" onSubmit={handleSubmit} noValidate>
-                            <div className="w-full">
+                            <div className="w-full bg-gray-100">
                                 <TabView
                                     activeIndex={activeIndex}
                                     onTabChange={(e) => setActiveIndex(e.index)}
                                     className="bg-gray-100"
                                 >
-
-                                    {/* Step 1: Access Details */}
                                     <TabPanel
+                                        className='bg-gray-100'
                                         header={
-                                            <div className="flex justify-center items-center">
-                                                <div className="flex flex-col justify-center items-center flex-1">
+                                            <div className="flex justify-center items-center text-center w-full">
+                                                <div className="flex flex-col justify-center items-center">
                                                     <div className={getTabClassName(0)}>1</div>
                                                     <div className={getTabLabelClassName(0)}>Access Details</div>
                                                 </div>
@@ -504,9 +502,8 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                             </div>
                                         </div>
                                     </TabPanel>
-
-                                    {/* Step 2 Shop Details */}
                                     <TabPanel
+                                        className='bg-gray-100'
                                         header={
                                             <div className="flex justify-center w-full">
                                                 <div className="flex flex-col items-center flex-1">
@@ -555,8 +552,6 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                             </div>
                                         </div>
                                     </TabPanel>
-
-                                    {/* Step 3 Shop Address*/}
                                     <TabPanel
                                         header={
                                             <div className="flex justify-center w-full">
@@ -614,7 +609,6 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                         </div>
                                     </TabPanel>
 
-                                    {/* Step 4  Verify Shop*/}
                                     <TabPanel
                                         header={
                                             <div className="flex justify-center w-full">
@@ -866,7 +860,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                         {activeIndex === 0 && (
                             <Button
                                 type="button"
-                                className="bg-green-800 text-white font-semibold text-lg space-x-2"
+                                className="bg-green-800 text-white font-semibold text-[15px] space-x-2"
                                 onClick={() => setActiveIndex(activeIndex + 1)}
                                 disabled={!isTab1Valid}
                             >
@@ -879,7 +873,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                             <div className="flex space-x-4">
                                 <Button
                                     type="button"
-                                    className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-lg flex items-center space-x-2"
+                                    className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
                                     onClick={() => setActiveIndex(activeIndex - 1)}
                                 >
                                     <IoIosArrowBack size={15} className="text-green-800" />
@@ -887,7 +881,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                 </Button>
                                 <Button
                                     type="button"
-                                    className="bg-green-800 text-white font-semibold text-lg flex items-center space-x-2"
+                                    className="bg-green-800 text-white font-semibold text-[15px] flex items-center space-x-2"
                                     onClick={() => setActiveIndex(activeIndex + 1)}
                                 >
                                     <span>Next</span>
@@ -900,7 +894,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                             <div className="flex space-x-4">
                                 <Button
                                     type="button"
-                                    className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-lg flex items-center space-x-2"
+                                    className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
                                     onClick={() => setActiveIndex(activeIndex - 1)}
                                 >
                                     <IoIosArrowBack size={15} className="text-green-800" />
@@ -909,7 +903,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                 <Button
                                     type="button"
                                     onClick={handleSubmitClick}
-                                    className="bg-green-800 text-white font-bold text-lg"
+                                    className="bg-green-800 text-white font-bold text-[15px]"
                                     disabled={!isTab4Valid}
                                 >
                                     Save <FaSave className="ml-2" />

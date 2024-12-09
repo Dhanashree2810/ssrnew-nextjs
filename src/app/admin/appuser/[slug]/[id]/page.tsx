@@ -11,7 +11,7 @@ const EditAppUserPage = async ({ params }: { params: { id: string , type:string}
     }
 
     return (
-        <div className=' mt-5 lg:mt-28 lg:mb-20 bg-[#F6F6F6]'>
+        <div className='  bg-[#F6F6F6]'>
             <AppUserMainForm appUserData={appUserData[0]} role={type} />
         </div>
     );
