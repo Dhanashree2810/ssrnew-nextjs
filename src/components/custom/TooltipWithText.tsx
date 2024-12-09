@@ -14,7 +14,7 @@ const TooltipWithText = ({ text }:any) => {
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button className='p-0 m-0'>
-                        <RiInformation2Line size={13} className='cursor-pointer text-red-600' />
+                        <RiInformation2Line size={13} className='cursor-pointer text-blue-600' />
                     </Button>
                 </TooltipTrigger>
                 <TooltipContent className='bg-gray-500 text-white font-bold p-3'>

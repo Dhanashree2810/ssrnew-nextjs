@@ -37,8 +37,8 @@ export default function AppUserList(props: any) {
 
   const itemTemplate = (user: any, index: number) => {
     return (
-      <Link href={`/admin/appuser/view/${user.id}`}>
-        <Card key={user.id} className="w-[320px] h-[270px]">
+      <Link href={`/admin/appuser/view/${user.id}`} className=''>
+        <Card key={user.id} className="w-[320px] h-[250px]">
           <Image
             src={prodil}
             alt={user.name || "Admin"}
@@ -51,12 +51,12 @@ export default function AppUserList(props: any) {
               <div className="space-x-2">
                 <Link href={`/admin/appuser/edit/${user.id}`}>
                   <Button className="text-blue-600 hover:text-gray-600 p-0">
-                    <BiEditAlt size={25} />
+                    <BiEditAlt size={23} />
                   </Button>
                 </Link>
                 <Link href={`/admin/appuser/view/${user.id}`}>
                   <Button className="text-blue-600 hover:text-gray-600 p-0">
-                    <LuEye size={25} />
+                    <LuEye size={23} />
                   </Button>
                 </Link>
               </div>
@@ -83,11 +83,11 @@ export default function AppUserList(props: any) {
       return itemTemplate(product, index);
     });
 
-    return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">{list}</div>;
+    return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-10">{list}</div>;
   };
 
   return (
-    <div className="card px-8 py-8 bg-white">
+    <div className="card px-10 py-8 bg-white">
       <DataView
         value={appUsers}
         listTemplate={listTemplate}

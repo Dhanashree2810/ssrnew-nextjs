@@ -7,6 +7,7 @@ import NavbarPage from "@/components/custom/Navbar";
 
 interface RootLayoutProps {
   children: ReactNode;
+  criteria: boolean;
 }
 
 const poppins = Poppins({
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   description: "ssrnew.wazl.in",
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, criteria }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -30,8 +31,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           poppins.variable
         )}
       >
-        <div className="flex flex-col min-h-screen overflow-y-auto">        
-          <NavbarPage />
+        <div className="flex flex-col min-h-screen overflow-y-auto">
+          {criteria &&
+            <NavbarPage />
+          }
           <main className="flex flex-1 flex-col  bg-gray-50">
             {children}
           </main>
