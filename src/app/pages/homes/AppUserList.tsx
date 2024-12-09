@@ -37,7 +37,7 @@ export default function AppUserList(props: any) {
 
   const itemTemplate = (user: any, index: number) => {
     return (
-      <Link href={`/admin/appuser/view/${user.id}`} className=''>
+      <Link href={`/appuser/view/${user.id}`} className=''>
         <Card key={user.id} className="w-[320px] h-[250px]">
           <Image
             src={prodil}
@@ -49,12 +49,12 @@ export default function AppUserList(props: any) {
           <CardContent className="p-3">
             <div className="flex justify-between items-center">
               <div className="space-x-2">
-                <Link href={`/admin/appuser/edit/${user.id}`}>
+                <Link href={`/appuser/edit/${user.id}`}>
                   <Button className="text-blue-600 hover:text-gray-600 p-0">
                     <BiEditAlt size={23} />
                   </Button>
                 </Link>
-                <Link href={`/admin/appuser/view/${user.id}`}>
+                <Link href={`/appuser/view/${user.id}`}>
                   <Button className="text-blue-600 hover:text-gray-600 p-0">
                     <LuEye size={23} />
                   </Button>

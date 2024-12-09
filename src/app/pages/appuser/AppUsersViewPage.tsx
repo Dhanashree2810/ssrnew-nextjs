@@ -101,7 +101,7 @@ export default function AppUsersViewPage(props: any) {
   return (
     <div className="relative h-screen flex flex-col p-4">
       <div className=" flex items-center pb-2">
-        <Link href="/">
+        <Link href="/appuser">
           <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mr-5" />
         </Link>
         <h1 className=" capitalize text-lg font-bold">
@@ -515,7 +515,7 @@ export default function AppUsersViewPage(props: any) {
           {activeIndex === 0 && (
             <Button
               type="button"
-              className="bg-green-800 text-white font-semibold text-lg space-x-2"
+              className="bg-green-800 text-white font-semibold text-[15px] space-x-2"
               onClick={() => setActiveIndex(activeIndex + 1)}
             >
               <span>Next</span>
@@ -527,7 +527,7 @@ export default function AppUsersViewPage(props: any) {
             <div className="flex space-x-4">
               <Button
                 type="button"
-                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-lg flex items-center space-x-2"
+                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
                 onClick={() => setActiveIndex(activeIndex - 1)}
               >
                 <IoIosArrowBack size={15} className="text-green-800" />
@@ -535,7 +535,7 @@ export default function AppUsersViewPage(props: any) {
               </Button>
               <Button
                 type="button"
-                className="bg-green-800 text-white font-semibold text-lg flex items-center space-x-2"
+                className="bg-green-800 text-white font-semibold text-[15px] flex items-center space-x-2"
                 onClick={() => setActiveIndex(activeIndex + 1)}
               >
                 <span>Next</span>
@@ -548,16 +548,16 @@ export default function AppUsersViewPage(props: any) {
             <div className="flex space-x-4">
               <Button
                 type="button"
-                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-lg flex items-center space-x-2"
+                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
                 onClick={() => setActiveIndex(activeIndex - 1)}
               >
                 <IoIosArrowBack size={15} className="text-green-800" />
                 <span>Previous</span>
               </Button>
-              <Link href={`/admin/appuser/edit/${formData.id}`} passHref>
+              <Link href={`/appuser/edit/${formData.id}`} passHref>
                 <Button
                   type="button"
-                  className="bg-green-800 text-white font-semibold text-lg flex items-center space-x-2"
+                  className="bg-green-800 text-white font-semibold text-[15px] flex items-center space-x-2"
                 >
                   <FaEdit size={15} className="text-white" />
                   <span>Edit</span>

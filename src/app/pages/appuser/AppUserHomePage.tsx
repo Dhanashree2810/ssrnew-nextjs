@@ -34,10 +34,10 @@ export default function AppUserHomePage(props: any) {
                         <h4 className="text-lg font-semibold mb-1">{item.name}</h4>
                         <h6 className="text-gray-600 text-sm mb-3">{item.emailId}</h6>
                         <div className="car-buttons flex justify-center gap-3 mt-5">
-                            <Link href={`/admin/appuser/view/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-green-800">
+                            <Link href={`/appuser/view/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-green-800">
                                 <CgEye className=' text-white h-7 w-7' />
                             </Link>
-                            <Link href={`/admin/appuser/edit/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-green-800">
+                            <Link href={`/appuser/edit/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-green-800">
                                 <RiFileEditLine className=' text-white h-7 w-7' />
                             </Link>
                         </div>
@@ -155,13 +155,13 @@ export default function AppUserHomePage(props: any) {
                                             </div>
                                             <div className="mt-2 flex space-x-2">
                                                 <Link
-                                                    href={`/admin/appuser/view/${item.id}`}
+                                                    href={`/appuser/view/${item.id}`}
                                                     className="flex items-center justify-center rounded-full p-3 bg-green-800"
                                                 >
                                                     <CgEye className="text-white h-7 w-7" />
                                                 </Link>
                                                 <Link
-                                                    href={`/admin/appuser/edit/${item.id}`}
+                                                    href={`/appuser/edit/${item.id}`}
                                                     className="flex items-center justify-center rounded-full p-3 bg-green-800"
                                                 >
                                                     <RiFileEditLine className="text-white h-7 w-7" />
@@ -201,13 +201,13 @@ export default function AppUserHomePage(props: any) {
                                             </div>
                                             <div className="mt-2 flex space-x-2">
                                                 <Link
-                                                    href={`/admin/appuser/view/${item.id}`}
+                                                    href={`/appuser/view/${item.id}`}
                                                     className="flex items-center justify-center rounded-full p-3 bg-green-800"
                                                 >
                                                     <CgEye className="text-white h-7 w-7" />
                                                 </Link>
                                                 <Link
-                                                    href={`/admin/appuser/edit/${item.id}`}
+                                                    href={`/appuser/edit/${item.id}`}
                                                     className="flex items-center justify-center rounded-full p-3 bg-green-800"
                                                 >
                                                     <RiFileEditLine className="text-white h-7 w-7" />
@@ -237,7 +237,7 @@ export default function AppUserHomePage(props: any) {
                                     </p>
                                     <div className='flex space-x-2 justify-center'>
                                         <Link
-                                            href={`/admin/appuser/view/${item.id}`}
+                                            href={`/appuser/view/${item.id}`}
                                             className="flex items-center text-white rounded-full p-3 bg-green-800 space-x-2"
                                         >
                                             <FaArrowRight className="w-5 h-5" />
