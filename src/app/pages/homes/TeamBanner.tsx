@@ -3,7 +3,7 @@ import teamBanner from '@/assets/images/team-banner.png'
 
 export default function TeamBanner() {
   return (
-    <div className="relative bg-gray-50 mt-20">
+    <div className="relative bg-gray-50 lg:mt-20">
       <div className="relative w-full">
         <Image
           src={teamBanner}

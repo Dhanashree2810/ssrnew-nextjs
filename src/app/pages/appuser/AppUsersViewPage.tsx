@@ -95,16 +95,16 @@ export default function AppUsersViewPage(props: any) {
     }`;
 
   const getTabLabelClassName = (index: any) =>
-    `text-center text-sm ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
+    `text-center text-sm uppercase mt-2 text-sm ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
     }`;
 
   return (
-    <div className="relative h-screen flex flex-col p-4">
-      <div className=" flex items-center pb-2">
+    <div className="relative flex flex-col">
+      <div className=" flex items-center p-3 bg-black text-white">
         <Link href="/appuser">
           <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mr-5" />
         </Link>
-        <h1 className=" capitalize text-lg font-bold">
+        <h1 className=" capitalize text-[15px] font-bold">
           Back to AppUser
         </h1>
       </div>
@@ -112,7 +112,7 @@ export default function AppUsersViewPage(props: any) {
       {error ? (
         <div className="text-red-500">{error}</div>
       ) : (
-        <div className="flex flex-col h-full overflow-y-auto border-none mb-10">
+        <div className="flex flex-col p-4  border-none lg:mt-10 lg:mb-20">
           <div className="container mx-auto">
             <div className="w-full">
               <TabView
@@ -121,11 +121,11 @@ export default function AppUsersViewPage(props: any) {
                 className="bg-gray-100 w-full"
                 style={{ width: '100%' }}>
 
-                {/* Step 1 */}
                 <TabPanel
+                  className=" border-none bg-gray-100 overflow-hidden"
                   header={
-                    <div className="flex justify-center w-full">
-                      <div className="flex flex-col items-center flex-1">
+                    <div className="flex justify-center w-full ">
+                      <div className="flex flex-col items-center flex-1 text-sm">
                         <div className={getTabClassName(0)}>1</div>
                         <div className={getTabLabelClassName(0)}>Access Details</div>
                       </div>
@@ -134,10 +134,10 @@ export default function AppUsersViewPage(props: any) {
                   headerClassName={`flex-1 ${activeIndex === 0 ? '' : 'p-disabled'}`}>
                   <div className="p-5 bg-gray-100">
                     <input type="hidden" name="id" value={formData.id} />
-                    <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5 ">
+                    <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="name" className="text-sm font-bold py-2">
+                          <Label htmlFor="name" className="text-lg font-bold py-2 text-black">
                             Name
                           </Label>
                           <span className=' text-red-600'>*</span>
@@ -148,7 +148,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="firstName" className="text-sm font-bold py-2 ">
+                          <Label htmlFor="firstName" className="text-lg font-bold py-2 text-black ">
                             First Name
                           </Label>
                           <TooltipWithText text="First Name" />
@@ -158,7 +158,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="lastName" className="text-sm font-bold py-2 ">
+                          <Label htmlFor="lastName" className="text-lg font-bold py-2 text-black ">
                             Last Name
                           </Label>
                           <TooltipWithText text="Last Name" />
@@ -167,10 +167,10 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
 
-                    <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
+                    <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="mobile" className="text-sm font-bold py-2">
+                          <Label htmlFor="mobile" className="text-lg font-bold py-2 text-black">
                             Mobile
                           </Label>
                           <span className=' text-red-600'>*</span>
@@ -181,7 +181,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="mobileVerified" className="text-sm font-bold py-2 ">
+                          <Label htmlFor="mobileVerified" className="text-lg font-bold py-2 text-black ">
                             Mobile Verified
                           </Label>
                           <span className=' text-red-600'>*</span>
@@ -208,7 +208,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="emailId" className="text-sm font-bold py-2">
+                          <Label htmlFor="emailId" className="text-lg font-bold py-2 text-black">
                             Email Id
                           </Label>
                           <TooltipWithText text="Email Id" />
@@ -218,7 +218,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="emailVerified" className="text-sm font-bold py-2 ">
+                          <Label htmlFor="emailVerified" className="text-lg font-bold py-2 text-black ">
                             Email Verified
                           </Label>
                           <TooltipWithText text="Email Verified" />
@@ -228,7 +228,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="shopName" className="text-sm font-bold py-2">
+                          <Label htmlFor="shopName" className="text-lg font-bold py-2 text-black">
                             Shop Name
                           </Label>
                           <TooltipWithText text="Shop Name" />
@@ -240,7 +240,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="password" className="text-sm font-bold py-2">
+                          <Label htmlFor="password" className="text-lg font-bold py-2 text-black">
                             Password
                           </Label>
                           <TooltipWithText text="Password" />
@@ -266,7 +266,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="pincode" className="text-sm font-bold py-2">
+                          <Label htmlFor="pincode" className="text-lg font-bold py-2 text-black">
                             Pincode
                           </Label>
                           <TooltipWithText text="Pincode" />
@@ -276,7 +276,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="state" className="text-sm font-bold py-2">
+                          <Label htmlFor="state" className="text-lg font-bold py-2 text-black">
                             State
                           </Label>
                           <TooltipWithText text="State" />
@@ -286,7 +286,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="district" className="text-sm font-bold py-2">
+                          <Label htmlFor="district" className="text-lg font-bold py-2 text-black">
                             District
                           </Label>
                           <TooltipWithText text="District" />
@@ -298,7 +298,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="address" className="text-sm font-bold py-2">
+                          <Label htmlFor="address" className="text-lg font-bold py-2 text-black">
                             Address Line 1
                           </Label>
                           <TooltipWithText text="Address Line 1" />
@@ -308,7 +308,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="addressLine" className="text-sm font-bold py-2">
+                          <Label htmlFor="addressLine" className="text-lg font-bold py-2 text-black">
                             Address Line 2
                           </Label>
                           <TooltipWithText text="Address Line 2" />
@@ -334,7 +334,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="gst" className="text-sm font-bold py-2">
+                          <Label htmlFor="gst" className="text-lg font-bold py-2 text-black">
                             GST Number
                           </Label>
                           <TooltipWithText text="GST Number" />
@@ -344,7 +344,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md overflow-auto ">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="gstCertificate" className="text-sm font-bold py-2">
+                          <Label htmlFor="gstCertificate" className="text-lg font-bold py-2 text-black">
                             GstCertificate
                           </Label>
                           <TooltipWithText text="GstCertificate" />
@@ -358,7 +358,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md overflow-auto">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="photoShopFront" className="text-sm font-bold py-2">
+                          <Label htmlFor="photoShopFront" className="text-lg font-bold py-2 text-black">
                             Photo Shop From Front
                           </Label>
                           <TooltipWithText text="Photo Shop From Front" />
@@ -374,7 +374,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md overflow-auto">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="visitingCard" className="text-sm font-bold py-2">
+                          <Label htmlFor="visitingCard" className="text-lg font-bold py-2 text-black">
                             VisitingCard
                           </Label>
                           <TooltipWithText text="VisitingCard" />
@@ -388,7 +388,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md overflow-auto">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="cheque" className="text-sm font-bold py-2">
+                          <Label htmlFor="cheque" className="text-lg font-bold py-2 text-black">
                             Cheque
                           </Label>
                           <TooltipWithText text="Cheque" />
@@ -402,7 +402,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="gstOtp" className="text-sm font-bold py-2">
+                          <Label htmlFor="gstOtp" className="text-lg font-bold py-2 text-black">
                             Gst Otp
                           </Label>
                           <TooltipWithText text="Gst Otp" />
@@ -414,7 +414,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="isActive" className="text-sm font-bold py-2">
+                          <Label htmlFor="isActive" className="text-lg font-bold py-2 text-black">
                             Active
                           </Label>
                           <span className=' text-red-600'>*</span>
@@ -425,7 +425,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="isAdmin" className="text-sm font-bold py-2">
+                          <Label htmlFor="isAdmin" className="text-lg font-bold py-2 text-black">
                             Is Admin
                           </Label>
                           <span className=' text-red-600'>*</span>
@@ -436,7 +436,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="hasImpersonateAccess" className="text-sm font-bold py-2">
+                          <Label htmlFor="hasImpersonateAccess" className="text-lg font-bold py-2 text-black">
                             Has Impersonate Access
                           </Label>
                           <TooltipWithText text="Has Impersonate Access" />
@@ -448,7 +448,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md overflow-auto">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="photoAttachment" className="text-sm font-bold py-2">
+                          <Label htmlFor="photoAttachment" className="text-lg font-bold py-2 text-black">
                             Photo
                           </Label>
                           <TooltipWithText text="Photo" />
@@ -462,7 +462,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="lastLogin" className="text-sm font-bold py-2">
+                          <Label htmlFor="lastLogin" className="text-lg font-bold py-2 text-black">
                             Last Login
                           </Label>
                           <TooltipWithText text="Last Login" />
@@ -472,7 +472,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="defaultLanguage" className="text-sm font-bold py-2">
+                          <Label htmlFor="defaultLanguage" className="text-lg font-bold py-2 text-black">
                             DefaultLanguage
                           </Label>
                           <TooltipWithText text="DefaultLanguage" />
@@ -484,7 +484,7 @@ export default function AppUsersViewPage(props: any) {
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5 md:pb-20 sm:pb-20">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="isPremiumUser" className="text-sm font-bold py-2">
+                          <Label htmlFor="isPremiumUser" className="text-lg font-bold py-2 text-black">
                             IsPremiumUser
                           </Label>
                           <TooltipWithText text="IsPremiumUser" />
@@ -494,7 +494,7 @@ export default function AppUsersViewPage(props: any) {
 
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
-                          <Label htmlFor="totalPlot" className="text-sm font-bold py-2">
+                          <Label htmlFor="totalPlot" className="text-lg font-bold py-2 text-black">
                             TotalPlot
                           </Label>
                           <TooltipWithText text="TotalPlot" />

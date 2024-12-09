@@ -87,7 +87,7 @@ export default function AppUserList(props: any) {
   };
 
   return (
-    <div className="card px-10 py-8 bg-white">
+    <div className="px-10 py-8 bg-white">
       <DataView
         value={appUsers}
         listTemplate={listTemplate}

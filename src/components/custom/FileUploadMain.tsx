@@ -87,7 +87,7 @@ function FileUploadMain({
         }
 
         try {
-            const response = await downloadFunction(file, tokenData);
+            const response = await downloadFunction(file);
 
             const blob = new Blob([response]);
             const link = document.createElement('a');
@@ -103,29 +103,19 @@ function FileUploadMain({
 
     return (
         <div className="file-attachments">
-            <ul className="">
+            <ul>
                 {uploadedFiles.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                         {
                             uploadedFiles.map((file) => (
-                                <li key={file.filePath} className=" relative flex flex-col items-center">
-                                    <div className="relative flex items-center justify-center rounded border-2 border-green-600 p-2 m-1" style={{ width: '60px', height: '60px' }}>
-                                        <div className="w-full h-full overflow-hidden rounded">
-                                            <Image
-                                                src={file.type.includes('pdf') ? '/assets/images/pdf-icon.png' : `${process.env.NEXT_PUBLIC_API_URL}/ImportFiles/${file.filePath.replace(/\\/g, "/")}`}
-                                                // width={35}
-                                                // height={35}
-                                                layout="fill"
-                                                objectFit="cover"
-                                                onClick={() => downloadFile(file)}
-                                                className="cursor-pointer"
-                                                // className="rounded-full object-cover cursor-pointer"
-                                                alt={file.fileName}
-                                            />
+                                <li key={file.filePath} className=" relative flex flex-col items-center cursor-pointer">
+                                    <div className="relative flex items-center justify-center rounded pb-2">
+                                        <div className="rounded border border-gray-500 p-3  w-[450px]"  onClick={() => downloadFile(file)} >                                         
+                                            <span className="text-sm font-medium">{file.fileName}</span>
                                         </div>
                                         <Button
                                             onClick={() => deleteAttachment(file)}
-                                            className="absolute top-8 left-14 text-red-600" 
+                                            className="absolute -top-1 -right-4 text-white  rounded-full bg-black" 
                                         >
                                             <RiDeleteBin6Fill className=' h-4 w-4' />
                                         </Button>

@@ -24,7 +24,8 @@ export default function ImgViewer({ imageShowUrl }: any) {
         style={{ height: '2.75em', width: '2.75em' }}
         onClick={() => setImageShowDialog(true)}
       >
-        <Image src={imageShowUrl} alt="Image Preview" className="object-cover" width={44} height={44} />
+        {/* <Image src={imageShowUrl} alt="Image Preview" className="object-cover" width={44} height={44} /> */}
+        {imageShowUrl}
       </div>
 
       {imageShowDialog && (

@@ -405,7 +405,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
         }`;
 
     const getTabLabelClassName = (index: any) =>
-        `text-center text-sm ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
+        `text-center text-sm uppercase mt-2 ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
         }`;
 
     const handleFileUpload = (newFiles: any[], inputName: keyof FileData) => {
@@ -417,7 +417,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
 
     return (
         <>
-            <div className='relative h-screen flex flex-col'>
+            <div className='relative flex flex-col'>
                 <div className=" flex items-center p-3 bg-black text-white">
                     <Link href="/appuser/">
                         <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mx-3" />
@@ -426,7 +426,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                         Back to AppUser
                     </h1>
                 </div>
-                <div className="flex flex-col h-full overflow-y-auto border-none mt-10 mb-20">
+                <div className="flex flex-col p-4 border-none lg:mt-10 lg:mb-20">
                     <div className="container mx-auto">
                         <form id="myForm" onSubmit={handleSubmit} noValidate>
                             <div className="w-full bg-gray-100">
