@@ -426,7 +426,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                         Back to AppUser
                     </h1>
                 </div>
-                <div className="flex flex-col p-4 border-none lg:mt-10 lg:mb-20">
+                <div className="flex flex-col p-4 border-none lg:mt-10 mb-10 lg:mb-20">
                     <div className="container mx-auto">
                         <form id="myForm" onSubmit={handleSubmit} noValidate>
                             <div className="w-full bg-gray-100">
@@ -635,7 +635,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                         filter
                                                         valueTemplate={selectedDropdownTemplate}
                                                         itemTemplate={dropdownOptionTemplate}
-                                                        className="w-full md:w-14rem"
+                                                        className="w-full md:w-14rem text-sm"
                                                     />
                                                 </div>
 
@@ -785,7 +785,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                         filter
                                                         valueTemplate={selectedDropdownTemplate}
                                                         itemTemplate={dropdownOptionTemplate}
-                                                        className="w-full md:w-14rem"
+                                                        className="w-full md:w-14rem text-sm"
                                                     />
                                                     {errors.role && <p className='text-red-600 text-xs py-5 pl-3 '>{errors.role}</p>}
                                                 </div>
@@ -807,7 +807,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                         filter
                                                         valueTemplate={selectedDropdownTemplate}
                                                         itemTemplate={dropdownOptionTemplate}
-                                                        className="w-full md:w-14rem"
+                                                        className="w-full md:w-14rem text-sm"
                                                     />
                                                     {errors.publish && <p className='text-red-600 text-xs py-5 pl-3 '>{errors.publish}</p>}
                                                 </div>

@@ -1,5 +1,10 @@
 'use client'
-import { Carousel } from 'primereact/carousel';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import "primeflex/primeflex.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { CiShoppingCart } from "react-icons/ci";
@@ -16,47 +21,41 @@ import user3 from '@/assets/images/user.png'
 import Image from 'next/image';
 
 
+const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 2,
+            },
+        },
+        {
+            breakpoint: 640,
+            settings: {
+                slidesToShow: 1,
+            },
+        },
+    ],
+};
+
+
 export default function AppUserHomePage(props: any) {
     const listHomeCommonData = props?.listHomeCommonData;
     const summaryData = listHomeCommonData?.summaryData;
     const topData = listHomeCommonData?.topData;
     const listHtmlData = props?.htmlData;
     const listHomeUserData = props?.listHomeUserData;
-
-    const itemTemplate = (item: any) => {
-        return (
-            <div>
-                <div className="p-5 shadow-lg rounded-lg">
-                    <div className="mb-3 flex justify-center">
-                        <Image
-                            src={user3}
-                            alt={item.name}
-                            className="h-32 w-32 object-cover rounded-full"
-                            objectFit='cover'
-                        />
-                    </div>
-                    <div className="text-center">
-                        <h4 className="text-lg font-semibold mb-1">{item.name}</h4>
-                        <h6 className="text-gray-600 text-sm mb-3">{item.emailId}</h6>
-                        <div className="car-buttons flex justify-center gap-3 mt-5">
-                            <Link href={`/appuser/view/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]">
-                                <CgEye className=' text-white h-7 w-7' />
-                            </Link>
-                            <Link href={`/appuser/edit/${item.id}`} className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]">
-                                <RiFileEditLine className=' text-white h-7 w-7' />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-
+ 
     return (
         <div className="relative flex flex-col p-5">
             <div className="flex flex-col border-none mb-10">
-                <section className="p-2 lg:ml-10">
+                <section className="p-2">
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5">
                         <div className="bg-white shadow p-5 border border-gray-200 rounded">
                             <div className="flex justify-between mb-3">
@@ -118,23 +117,40 @@ export default function AppUserHomePage(props: any) {
                     </Link>
                 </section>
 
-                <section className="p-2">
-                    {topData && (
-                        <div>
-                            <h5 className="text-left text-2xl lg:text-3xl font-bold mb-5">Achievers</h5>
-                            <Carousel
-                                value={topData}
-                                numVisible={3}
-                                numScroll={3}
-                                circular={false}
-                                itemTemplate={itemTemplate}
-                            />
-                        </div>
-                    )}
+                <section>
+                    <Slider {...settings} className="text-white">
+                        {topData.map((slide: any) => (
+                            <div key={slide.id} className="h-full flex items-center justify-center">
+                                <div className="grid grid-cols-1 max-w-full gap-5 items-center justify-center px-2 py-4 lg:px-4 lg:py-6">
+                                    <div className="flex flex-col overflow-hidden p-5 shadow-lg rounded-lg bg-white">
+                                        <div className="mb-3 flex justify-center">
+                                            <Image
+                                                src={user3}
+                                                alt={slide.name}
+                                                className="h-[150px] w-[150px] lg:h-[150px] lg:w-[150px] object-cover rounded-full"
+                                            />
+                                        </div>
+                                        <div className="text-center">
+                                            <h4 className="text-lg font-semibold text-gray-600 mb-1">{slide.name}</h4>
+                                            <h6 className="text-gray-600 text-sm mb-3">{slide.emailId}</h6>
+                                            <div className="car-buttons flex justify-center gap-3 mt-5">
+                                                <Link href={`/appuser/view/${slide.id}`} className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]">
+                                                    <CgEye className="text-white h-6 w-6" />
+                                                </Link>
+                                                <Link href={`/appuser/edit/${slide.id}`} className="flex items-center justify-center rounded-full p-3 bg-gradient-to-r from-[#9333EA] to-[#609AF8]">
+                                                    <RiFileEditLine className="text-white h-6 w-6" />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
                 </section>
 
-                <section className="lg:p-10 lg:mb-10">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-32">
+                <section className="lg:p-10 mt-12 lg:mb-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-32">
                         <div className="bg-white shadow-md rounded p-4">
                             <div className="flex justify-between items-center mb-5">
                                 <span className="text-xl font-semibold">Created by Me</span>
@@ -143,7 +159,7 @@ export default function AppUserHomePage(props: any) {
                                 {listHomeUserData?.topData?.map((item: any) => (
                                     <li
                                         key={item.name}
-                                        className="flex flex-row items-center justify-between lg:gap-48 mb-8"
+                                        className="flex flex-row items-center justify-between gap-36 lg:gap-48 mb-8"
                                     >
                                         <div className="flex-shrink-0">
                                             <Image
@@ -187,11 +203,11 @@ export default function AppUserHomePage(props: any) {
                                 </span>
                             </div>
 
-                            <ul className="max-h-80">
+                            <ul>
                                 {listHomeCommonData?.topData?.map((item: any) => (
                                     <li
                                         key={item.name}
-                                        className="flex flex-row items-center justify-between lg:gap-48 mb-8"
+                                        className="flex flex-row items-center justify-between gap-36 lg:gap-48 mb-8"
                                     >
                                         <div className="flex-shrink-0">
                                             <Image
@@ -230,10 +246,10 @@ export default function AppUserHomePage(props: any) {
                 </section>
 
                 {listHomeCommonData?.lastData?.length > 0 && (
-                    <section className="px-2 lg:px-10">
-                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                    <section className="px-2 mt-10 lg:px-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {listHomeCommonData.lastData.slice(0, 4).map((item: any, index: any) => (
-                                <Card key={index} className="shadow-md text-center p-5">
+                                <Card key={index} className="shadow-md text-center">
                                     <Image
                                         src={user2}
                                         alt="Image"

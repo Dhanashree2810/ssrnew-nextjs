@@ -3,7 +3,7 @@ import teamBanner from '@/assets/images/team-banner.png'
 
 export default function TeamBanner() {
   return (
-    <div className="relative bg-gray-50 lg:mt-20">
+    <div className="relative bg-gray-50 mt-20">
       <div className="relative w-full">
         <Image
           src={teamBanner}
@@ -19,7 +19,7 @@ export default function TeamBanner() {
         </div>
       </div>
       <div className="mt-10 px-8 md:px-16 lg:px-24 text-center animate-fade-in">
-        <p className="text-gray-700 text-lg sm:text-xl md:text-2xl font-medium">
+        <p className="text-gray-700 text-lg lg:text-2xl font-medium">
           What does it mean to “Get the Future You Want”? Hear from some of our people around the world.
         </p>
       </div>
