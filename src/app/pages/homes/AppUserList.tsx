@@ -38,7 +38,7 @@ export default function AppUserList(props: any) {
   const itemTemplate = (user: any, index: number) => {
     return (
       <Link href={`/appuser/view/${user.id}`} className=''>
-        <Card key={user.id} className="w-[320px] h-[250px]">
+        <Card key={user.id} className="w-[250px] lg:w-[320px] h-[250px] lg:h-[250px]">
           <Image
             src={prodil}
             alt={user.name || "Admin"}
@@ -83,7 +83,7 @@ export default function AppUserList(props: any) {
       return itemTemplate(product, index);
     });
 
-    return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-10">{list}</div>;
+    return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">{list}</div>;
   };
 
   return (

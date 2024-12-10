@@ -77,13 +77,13 @@ export default function NavbarPage() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-4 bg-white">
-              <nav className="space-y-4">
+            <SheetContent side="left" className="p-6 bg-white">
+              <nav className="space-y-4 mt-10">
                 {menuItems.map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
-                    className={`block text-gray-800 hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''
+                    className={`block text-gray-800 hover:text-blue-500 font-semibold ${pathname === item.href ? 'text-blue-500' : ''
                       }`}
                   >
                     {item.label}
