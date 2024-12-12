@@ -96,16 +96,16 @@ export default function AppUsersViewPage(props: any) {
     }`;
 
   const getTabLabelClassName = (index: any) =>
-    `text-center text-sm uppercase mt-2 text-sm ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
+    `text-center text-[12px] uppercase mt-2  ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
     }`;
 
   return (
-    <div className="relative flex flex-col">
-      <div className=" flex items-center p-3 bg-black text-white">
+    <div className="relative flex flex-col h-screen">
+      <div className=" flex items-center p-3 bg-black text-white  sticky top-0 z-50">
         <Link href="/appuser">
           <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mr-5" />
         </Link>
-        <h1 className=" capitalize text-[15px] font-bold">
+        <h1 className=" capitalize text-[16px] font-bold">
           Back to AppUser
         </h1>
       </div>
@@ -113,27 +113,25 @@ export default function AppUsersViewPage(props: any) {
       {error ? (
         <div className="text-red-500">{error}</div>
       ) : (
-        <div className="flex flex-col p-4  border-none lg:mt-10 mb-10 lg:mb-20">
+        <div className="flex flex-col border-none mb-10 pb-20 lg:pb-0 lg:mb-20">
           <div className="container mx-auto">
             <div className="w-full">
               <TabView
                 activeIndex={activeIndex}
-                onTabChange={(e) => setActiveIndex(e.index)}
-                className="bg-gray-100 w-full"
-                style={{ width: '100%' }}>
+                onTabChange={(e) => setActiveIndex(e.index)}>
 
                 <TabPanel
-                  className=" border-none bg-gray-100 overflow-hidden"
+                  className=""
                   header={
-                    <div className="flex justify-center w-full ">
-                      <div className="flex flex-col items-center flex-1 text-sm">
+                    <div className="flex justify-center items-center text-center w-full">
+                      <div className="flex flex-col justify-center items-center">
                         <div className={getTabClassName(0)}>1</div>
                         <div className={getTabLabelClassName(0)}>Access Details</div>
                       </div>
                     </div>
                   }
-                  headerClassName={`flex-1 ${activeIndex === 0 ? '' : 'p-disabled'}`}>
-                  <div className="p-5 bg-gray-100">
+                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 0 ? '' : 'p-disabled'}`}>
+                  <div className="p-2">
                     <input type="hidden" name="id" value={formData.id} />
                     <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
@@ -194,7 +192,6 @@ export default function AppUsersViewPage(props: any) {
                   </div>
                 </TabPanel>
 
-                {/* Step 2 */}
                 <TabPanel
                   header={
                     <div className="flex justify-center w-full">
@@ -204,8 +201,8 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   }
-                  headerClassName={`flex-1 ${activeIndex === 1 ? '' : 'p-disabled'}`}>
-                  <div className="p-5 bg-gray-100">
+                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 1 ? '' : 'p-disabled'}`}>
+                  <div className="p-2">
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
@@ -252,7 +249,6 @@ export default function AppUsersViewPage(props: any) {
                   </div>
                 </TabPanel>
 
-                {/* Step 3 */}
                 <TabPanel
                   header={
                     <div className="flex justify-center w-full">
@@ -262,8 +258,8 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   }
-                  headerClassName={`flex-1 ${activeIndex === 2 ? '' : 'p-disabled'}`}>
-                  <div className="p-5 bg-gray-100">
+                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 2 ? '' : 'p-disabled'}`}>
+                  <div className="p-2">
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
@@ -330,8 +326,8 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   }
-                  headerClassName={`flex-1 ${activeIndex === 3 ? '' : 'p-disabled'}`}>
-                  <div className="p-5 bg-gray-100">
+                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 3 ? '' : 'p-disabled'}`}>
+                  <div className="p-2">
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
                         <div className="flex items-center space-x-2">
