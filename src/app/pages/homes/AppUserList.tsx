@@ -37,16 +37,16 @@ export default function AppUserList(props: any) {
 
   const itemTemplate = (user: any, index: number) => {
     return (
-      <Link href={`/appuser/view/${user.id}`} className=''>
-        <Card key={user.id} className="w-[250px] lg:w-[320px] h-[250px] lg:h-[250px]">
+      <Link href={`/appuser/view/${user.id}`} className='block'>
+        <Card key={user.id} className="w-full h-auto lg:h-[250px] flex flex-col justify-between">
           <Image
             src={prodil}
             alt={user.name || "Admin"}
-            className="w-full h-32 object-cover rounded-t-lg cursor-pointer"
+            className="w-full h-32 object-cover rounded-t-lg"
             width={350}
             height={128}
           />
-          <CardContent className="p-3">
+          <CardContent className="p-3 flex-1 flex flex-col justify-between">
             <div className="flex justify-between items-center">
               <div className="space-x-2">
                 <Link href={`/appuser/edit/${user.id}`}>
@@ -83,11 +83,11 @@ export default function AppUserList(props: any) {
       return itemTemplate(product, index);
     });
 
-    return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">{list}</div>;
+    return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">{list}</div>;
   };
 
   return (
-    <div className="px-10 py-8 bg-white">
+    <div className="px-4 sm:px-8 lg:px-12 py-8 bg-white">
       <DataView
         value={appUsers}
         listTemplate={listTemplate}

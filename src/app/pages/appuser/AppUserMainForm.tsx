@@ -405,7 +405,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
         }`;
 
     const getTabLabelClassName = (index: any) =>
-        `text-center text-sm uppercase mt-2 ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
+        `text-center text-[12px] uppercase mt-2 ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
         }`;
 
     const handleFileUpload = (newFiles: any[], inputName: keyof FileData) => {
@@ -417,8 +417,8 @@ const AppUserMainForm = ({ appUserData }: any) => {
 
     return (
         <>
-            <div className='relative flex flex-col'>
-                <div className=" flex items-center p-3 bg-black text-white">
+            <div className='relative flex flex-col h-screen'>
+                <div className="flex items-center p-3 bg-black text-white sticky top-0 z-50">
                     <Link href="/appuser/">
                         <HiArrowLongLeft className=" h-9 w-9 cursor-pointer mx-3" />
                     </Link>
@@ -426,17 +426,18 @@ const AppUserMainForm = ({ appUserData }: any) => {
                         Back to AppUser
                     </h1>
                 </div>
-                <div className="flex flex-col p-4 border-none lg:mt-10 mb-10 lg:mb-20">
+
+                <div className="flex flex-col border-none mb-10 pb-20 lg:pb-0 lg:mb-20 ">
                     <div className="container mx-auto">
                         <form id="myForm" onSubmit={handleSubmit} noValidate>
-                            <div className="w-full bg-gray-100">
+                            <div className="w-full">
                                 <TabView
                                     activeIndex={activeIndex}
                                     onTabChange={(e) => setActiveIndex(e.index)}
-                                    className="bg-gray-100"
+                                    className=""
                                 >
                                     <TabPanel
-                                        className='bg-gray-100'
+                                        className=""
                                         header={
                                             <div className="flex justify-center items-center text-center w-full">
                                                 <div className="flex flex-col justify-center items-center">
@@ -445,8 +446,8 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                 </div>
                                             </div>
                                         }
-                                        headerClassName={`flex-1 ${activeIndex === 0 ? '' : 'p-disabled'}`}>
-                                        <div className="p-2 bg-gray-100">
+                                        headerClassName={` sticky top-[4rem] z-40 flex-1  ${activeIndex === 0 ? '' : 'p-disabled'}`}>
+                                        <div className="p-2">
                                             <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5 ">
                                                 <div className="flex flex-col">
                                                     <div className=' flex items-center'>
@@ -503,7 +504,7 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                         </div>
                                     </TabPanel>
                                     <TabPanel
-                                        className='bg-gray-100'
+                                        className=''
                                         header={
                                             <div className="flex justify-center w-full">
                                                 <div className="flex flex-col items-center flex-1">
@@ -512,8 +513,8 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                 </div>
                                             </div>
                                         }
-                                        headerClassName={`flex-1 ${activeIndex === 1 ? '' : 'p-disabled'}`}>
-                                        <div className="p-2 bg-gray-100">
+                                        headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 1 ? '' : 'p-disabled'}`}>
+                                        <div className="p-2 ">
                                             <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5 ">
                                                 <div className="flex flex-col">
                                                     <div className=' flex items-center'>
@@ -561,8 +562,8 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                 </div>
                                             </div>
                                         }
-                                        headerClassName={`flex-1 ${activeIndex === 2 ? '' : 'p-disabled'}`}>
-                                        <div className="p-2 bg-gray-100">
+                                        headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 2 ? '' : 'p-disabled'}`}>
+                                        <div className="p-2">
                                             <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5 ">
                                                 <div className="flex flex-col">
                                                     <div className=' flex items-center'>
@@ -617,9 +618,9 @@ const AppUserMainForm = ({ appUserData }: any) => {
                                                     <div className={getTabLabelClassName(3)}>Verify Shop</div>
                                                 </div>
                                             </div>
-                                        }
-                                        headerClassName={`flex-1 ${activeIndex === 3 ? '' : 'p-disabled'}`}>
-                                        <div className="p-2 bg-gray-100">
+                                        } 
+                                        headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 3 ? '' : 'p-disabled'}`}>
+                                        <div className="p-2">
                                             <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5 ">
                                                 <div className="flex flex-col">
                                                     <div className=' flex items-center'>
