@@ -1,4 +1,4 @@
-import axios from "axios";
+
 
 interface CustomFile {
     fileName: string;
@@ -13,13 +13,20 @@ const fetchAppUsers = async (): Promise<any> => {
     };
 
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/Get`, payload,
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            });
-        const data = response.data;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/Get`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+            cache: "no-cache"
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
+        }
+
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error("Fetch error:", error);
@@ -32,13 +39,21 @@ const fetchAppUsersById = async (appuserID: any): Promise<any> => {
     }
 
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetById`, payload,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetById`,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             });
-        const data = response.data;
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
+        }
+
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error("Fetch error:", error);
@@ -52,13 +67,21 @@ const DraftAppUsersById = async (appuserID: any): Promise<any> => {
     }
 
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/Draft`, payload,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/Draft`,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             });
-        const data = response.data;
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
+        }
+
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error("Fetch error:", error);
@@ -69,20 +92,25 @@ const DraftAppUsersById = async (appuserID: any): Promise<any> => {
 const addAppUser = async (payload: any): Promise<any> => {
 
     try {
-        const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/AppUser/Add`, payload,
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/AppUser/Add`,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             }
         );
 
-        if (response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Failed to add AppUser. Please try again later.');
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
         }
+
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Fetch error:', error);
         throw error;
@@ -90,21 +118,27 @@ const addAppUser = async (payload: any): Promise<any> => {
 };
 
 const updateAppUser = async (payload: any): Promise<any> => {
+
     try {
-        const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/AppUser/Update`, payload,
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/AppUser/Update`,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             }
         );
 
-        if (response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Failed to update AppUser. Please try again later.');
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
         }
+
+        const data = await response.json();
+        return data;
+
     } catch (error) {
         console.error('Fetch error:', error);
         throw error;
@@ -112,22 +146,30 @@ const updateAppUser = async (payload: any): Promise<any> => {
 };
 
 const deleteAppUser = async (userId: string): Promise<any> => {
+    const payload = {
+        Id: userId
+    }
+
     try {
-        const response = await axios.post(
+        const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/AppUser/Delete`,
-            { Id: userId },
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             }
         );
 
-        if (response.status === 200) {
-            return true;
-        } else {
-            throw new Error('Failed to delete AppUser. Please try again later.');
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
         }
+
+        const data = await response.json();
+        return data;
+
     } catch (error) {
         console.error('Error deleting AppUser:', error);
         throw error;
@@ -139,21 +181,25 @@ const fileUploadAppUser = async (image: File): Promise<any> => {
         const formDataImage = new FormData();
         formDataImage.append('file', image);
 
-        const response = await axios.post(
+        const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/AppUser/FileUpload`,
-            formDataImage,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
+                body: JSON.stringify(formDataImage),
+                cache: "no-cache"
             }
         );
 
-        if (response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Failed to upload image. Please try again later.');
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
         }
+
+        const data = await response.json();
+        return data;
+
     } catch (error) {
         console.error('Image upload error:', error);
         throw error;
@@ -164,20 +210,24 @@ const fileUploadAppUser = async (image: File): Promise<any> => {
 const uploadAppUser = async (formData: FormData): Promise<any> => {
     try {
 
-        const response = await axios.post(
+        const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/AppUser/FileUpload`,
-            formData,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
+                body: JSON.stringify(formData),
+                cache: "no-cache"
             }
         );
-        if (response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Failed to upload image. Please try again later.');
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
         }
+
+        const data = await response.json();
+        return data;
+
     } catch (error) {
         console.error('Image upload error:', error);
         throw error;
@@ -187,22 +237,25 @@ const uploadAppUser = async (formData: FormData): Promise<any> => {
 
 const downloadFileAppUser = async (file: CustomFile): Promise<Blob> => {
     try {
-        const response = await axios.post(
+        const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/AppUser/Download`,
-            file,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                responseType: 'blob',
+                body: JSON.stringify(file),
+                cache: "no-cache"
             }
         );
 
-        if (response.status === 200) {
-            return response.data;
-        } else {
-            throw new Error('Failed to download file. Please try again later.');
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
         }
+
+        const data = await response.json();
+        return data;
+
     } catch (error) {
         console.error('Download file error:', error);
         throw error;
@@ -217,12 +270,20 @@ const getHomeCommonData = async (): Promise<any> => {
     }
 
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetHomeCommonData`, payload,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetHomeCommonData`,
             {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             });
-        const data = response.data;
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
+        }
+
+        const data = await response.json();
         return data;
+
     } catch (error) {
         console.error("Fetch error:", error);
     }
@@ -238,12 +299,20 @@ const getHtmlData = async (): Promise<any> => {
     }
 
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetHtmlData`, payload,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetHtmlData`,
             {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             });
-        const data = response.data;
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
+        }
+
+        const data = await response.json();
         return data;
+
     } catch (error) {
         console.error("Fetch error:", error);
     }
@@ -258,14 +327,22 @@ const getHomeUserData = async (): Promise<any> => {
     }
 
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetHomeUserData`, payload,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/AppUser/GetHomeUserData`,
             {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify(payload),
+                cache: "no-cache"
             });
-        const data = response.data;
+        if (!response.ok) {
+            throw new Error(`HTTP error ! status",${response.status}`);
+        }
+
+        const data = await response.json();
         return data;
+
     } catch (error) {
         console.error("Fetch error:", error);
     }

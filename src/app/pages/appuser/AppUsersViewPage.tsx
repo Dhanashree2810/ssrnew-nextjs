@@ -113,7 +113,7 @@ export default function AppUsersViewPage(props: any) {
       {error ? (
         <div className="text-red-500">{error}</div>
       ) : (
-        <div className="flex flex-col border-none mb-10 pb-20 lg:pb-0 lg:mb-20">
+        <div className="flex flex-col border-none mb-10 pb-20 lg:pb-20 lg:mb-20">
           <div className="container mx-auto">
             <div className="w-full">
               <TabView

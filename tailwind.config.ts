@@ -1,6 +1,5 @@
 
 import type { Config } from "tailwindcss"
-import bg from '@/Assets/img.jpg';
 
 const config = {
   darkMode: ["class"],
@@ -74,10 +73,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },      
-      backgroundImage: {
-        'custom-image': `url(${bg.src})`,
-      },      
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
