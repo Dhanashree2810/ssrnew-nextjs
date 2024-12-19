@@ -37,7 +37,7 @@ export default function AppUserList(props: any) {
 
   const itemTemplate = (user: any, index: number) => {
     return (
-      <Link href={`/appuser/view/${user.id}`} className='block'>
+      <div key={user.id} className='block'>
         <Card key={user.id} className="w-full h-auto lg:h-[250px] flex flex-col justify-between">
           <Image
             src={prodil}
@@ -72,7 +72,7 @@ export default function AppUserList(props: any) {
             </p>
           </CardContent>
         </Card>
-      </Link>
+      </div>
     );
   };
 

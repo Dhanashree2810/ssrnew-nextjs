@@ -5,9 +5,8 @@ import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import dynamic from "next/dynamic";
 
-const NavbarPage = dynamic(() => import("@/components/custom/Navbar"), {
-  ssr: false,
-});
+import { ClientNavbarWrapper } from "@/components/custom/client-navbar-wrapper";
+
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -36,12 +35,8 @@ export default function RootLayout({ children, criteria }: RootLayoutProps) {
         )}
       >
         <div className="flex flex-col">
-          {criteria &&
-            <NavbarPage />
-          }
-          <main className="flex flex-1 flex-col  bg-gray-50">
-            {children}
-          </main>
+          <ClientNavbarWrapper criteria={criteria} />
+          <main className="flex flex-1 flex-col bg-gray-50">{children}</main>
         </div>
       </body>
     </html>
