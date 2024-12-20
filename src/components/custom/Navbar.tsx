@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
@@ -20,23 +19,26 @@ export default function NavbarPage() {
     { href: "/appuser", label: "List" },
   ];
 
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="bg-white shadow fixed left-0 right-0 z-50">
-      <div className="bg-[#326fd1] text-white h-10 flex justify-center items-center">
-        <h1 className="m-0 p-0 text-center text-sm font-semibold">
-          1st Time Buyer? Use "FIRST" Promo Code To Instantly Get 10% OFF!
-        </h1>
-      </div>
-
-      <nav className='top-8 p-4'>
+    <div className={`fixed left-0 right-0 z-50 bg-white shadow transition-all duration-300 ${isScrolled ? 'h-12' : 'h-16'}`}>
+      <nav className="p-2">
         <div className="container mx-auto flex items-center justify-between px-4 lg:px-8">
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl lg:text-3xl font-bold text-purple-600">
+            <h1 className="text-lg lg:text-xl font-bold text-purple-600 leading-tight">
               Brand<span className="text-blue-400">Name</span>
             </h1>
-            <i className="ri-gem-line text-blue-400 text-2xl" />
+            <i className="ri-gem-line text-blue-400 text-xl" />
           </div>
 
           <div className="hidden lg:flex space-x-6 font-semibold">
@@ -44,32 +46,21 @@ export default function NavbarPage() {
               <Link
                 key={index}
                 href={item.href}
-                className={`text-gray-800 uppercase font-semibold hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''
-                  }`}
+                className={`text-gray-800 uppercase font-semibold hover:text-blue-500 ${pathname === item.href ? 'text-blue-500' : ''}`}
               >
                 {item.label}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <Button className="hover:text-blue-500">
-              <IoSearch size={20} className="text-gray-600" />
+              <IoSearch size={18} className="text-gray-600" />
             </Button>
             <Button className="hover:text-blue-500">
-              <RiShoppingCartLine size={20} className="text-gray-600" />
+              <RiShoppingCartLine size={18} className="text-gray-600" />
             </Button>
           </div>
-
-          {/* 
-            <Button
-              variant="ghost"
-              className="text-gray-800 lg:hidden hover:text-blue-500"
-              onClick={() => setMenuOpen(!isMenuOpen)}
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-          </div> */}
 
           <Sheet>
             <SheetTrigger asChild>
@@ -78,13 +69,12 @@ export default function NavbarPage() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-6 bg-white">
-              <nav className="space-y-4 mt-10">
+              <nav className="space-y-4 mt-6">
                 {menuItems.map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
-                    className={`block text-gray-800 hover:text-blue-500 font-semibold ${pathname === item.href ? 'text-blue-500' : ''
-                      }`}
+                    className={`block text-gray-800 hover:text-blue-500 font-semibold ${pathname === item.href ? 'text-blue-500' : ''}`}
                   >
                     {item.label}
                   </Link>
@@ -92,7 +82,6 @@ export default function NavbarPage() {
               </nav>
             </SheetContent>
           </Sheet>
-
         </div>
       </nav>
     </div>
