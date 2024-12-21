@@ -49,7 +49,7 @@ export default function AppUsersViewPage(props: any) {
 
   useEffect(() => {
     getAppUsersData();
-  }, []);
+  }, [props]);
 
   const getAppUsersData = async () => {
     try {

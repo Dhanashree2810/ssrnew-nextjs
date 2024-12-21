@@ -3,7 +3,7 @@ import AppUserMainForm from "@/app/pages/appuser/AppUserMainForm";
 
 const AddAppUserPage = () => {
     return (
-        <Layout criteria={false}>
+        <Layout>
             < AppUserMainForm />
         </Layout>
     );

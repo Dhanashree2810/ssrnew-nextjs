@@ -12,7 +12,7 @@ export default async function Page({
   const appUserData = await fetchAppUsersById(id);
 
   return (
-    <Layout criteria={false}>
+    <Layout>
       <AppUsersViewPage appUserData={appUserData} />
     </Layout>
   )

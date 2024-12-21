@@ -19,6 +19,8 @@ import user1 from '@/assets/images/user (1).png'
 import user2 from '@/assets/images/user (2).png'
 import user3 from '@/assets/images/user.png'
 import Image from 'next/image';
+import { Steps } from 'primereact/steps';
+import { MenuItem } from 'primereact/menuitem';
 
 
 const settings = {
@@ -51,6 +53,8 @@ export default function AppUserHomePage(props: any) {
     const topData = listHomeCommonData?.topData;
     const listHtmlData = props?.htmlData;
     const listHomeUserData = props?.listHomeUserData;
+
+    
  
     return (
         <div className="relative flex flex-col p-5">
@@ -159,7 +163,7 @@ export default function AppUserHomePage(props: any) {
                                 {listHomeUserData?.topData?.map((item: any) => (
                                     <li
                                         key={item.name}
-                                        className="flex flex-row items-center justify-between gap-36 lg:gap-48 mb-8"
+                                        className="flex flex-row items-center justify-between gap-20 lg:gap-48 mb-8"
                                     >
                                         <div className="flex-shrink-0">
                                             <Image
@@ -207,7 +211,7 @@ export default function AppUserHomePage(props: any) {
                                 {listHomeCommonData?.topData?.map((item: any) => (
                                     <li
                                         key={item.name}
-                                        className="flex flex-row items-center justify-between gap-36 lg:gap-48 mb-8"
+                                        className="flex flex-row items-center justify-between gap-20 lg:gap-48 mb-8"
                                     >
                                         <div className="flex-shrink-0">
                                             <Image

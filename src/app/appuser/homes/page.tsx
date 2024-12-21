@@ -9,7 +9,7 @@ export default async function page() {
   const listHomeUserData = await getHomeUserData();
 
   return (
-    <Layout criteria={true}>
+    <Layout>
       <div className=' bg-[#F6F6F6] mt-24 lg:mt-28'>
         <AppUserHomePage listHomeCommonData={listHomeCommonData} htmlData={htmlData} listHomeUserData={listHomeUserData} />
       </div>

@@ -19,7 +19,7 @@ const fetchAppUsers = async (): Promise<any> => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload),
-            cache: "no-cache"
+            cache: "no-store"
         });
 
         if (!response.ok) {
@@ -46,7 +46,7 @@ const fetchAppUsersById = async (appuserID: any): Promise<any> => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             });
 
         if (!response.ok) {
@@ -74,7 +74,7 @@ const DraftAppUsersById = async (appuserID: any): Promise<any> => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             });
 
         if (!response.ok) {
@@ -100,7 +100,7 @@ const addAppUser = async (payload: any): Promise<any> => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             }
         );
 
@@ -128,7 +128,7 @@ const updateAppUser = async (payload: any): Promise<any> => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             }
         );
 
@@ -159,7 +159,7 @@ const deleteAppUser = async (userId: string): Promise<any> => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             }
         );
 
@@ -189,7 +189,7 @@ const fileUploadAppUser = async (image: File): Promise<any> => {
                     'Content-Type': 'multipart/form-data',
                 },
                 body: JSON.stringify(formDataImage),
-                cache: "no-cache"
+                cache: "no-store"
             }
         );
 
@@ -218,7 +218,7 @@ const uploadAppUser = async (formData: FormData): Promise<any> => {
                     'Content-Type': 'multipart/form-data',
                 },
                 body: JSON.stringify(formData),
-                cache: "no-cache"
+                cache: "no-store"
             }
         );
         if (!response.ok) {
@@ -245,7 +245,7 @@ const downloadFileAppUser = async (file: CustomFile): Promise<Blob> => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(file),
-                cache: "no-cache"
+                cache: "no-store"
             }
         );
 
@@ -275,7 +275,7 @@ const getHomeCommonData = async (): Promise<any> => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             });
         if (!response.ok) {
             throw new Error(`HTTP error ! status",${response.status}`);
@@ -304,7 +304,7 @@ const getHtmlData = async (): Promise<any> => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             });
         if (!response.ok) {
             throw new Error(`HTTP error ! status",${response.status}`);
@@ -334,7 +334,7 @@ const getHomeUserData = async (): Promise<any> => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             });
         if (!response.ok) {
             throw new Error(`HTTP error ! status",${response.status}`);

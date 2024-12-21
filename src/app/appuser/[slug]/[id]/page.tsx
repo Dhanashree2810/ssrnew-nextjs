@@ -15,7 +15,7 @@ const EditAppUserPage = async ({
     }
 
     return (
-        <Layout criteria={false}>
+        <Layout>
             <div className='bg-[#F6F6F6]'>
                 <AppUserMainForm appUserData={appUserData} />
             </div>
