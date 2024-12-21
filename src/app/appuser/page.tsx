@@ -1,6 +1,6 @@
 import { fetchAppUsers } from "@/services/appusers";
 import TeamBanner from "@/app/pages/homes/TeamBanner";
-import AppUserList from "@/app/pages/homes/AppUserList";
+import AppUserList from "@/app/pages/appuser/AppUserList";
 import Layout from "@/app/layout";
 
 
@@ -8,7 +8,7 @@ export default async function page() {
   const appUserData = await fetchAppUsers();
 
   return (
-    <Layout criteria={true}>
+    <Layout>
       <TeamBanner />
       <AppUserList appUserData={appUserData} />
     </Layout >

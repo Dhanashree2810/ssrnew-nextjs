@@ -14,7 +14,7 @@ const fetchEnumDetailsData = async (): Promise<any> => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(payload),
-                cache: "no-cache"
+                cache: "no-store"
             });
         if (!response.ok) {
             throw new Error(`HTTP error ! status",${response.status}`);

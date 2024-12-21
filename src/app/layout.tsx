@@ -3,14 +3,11 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-import dynamic from "next/dynamic";
-
-import { ClientNavbarWrapper } from "@/components/custom/client-navbar-wrapper";
+import NavbarPage from "@/components/custom/Navbar";
 
 
 interface RootLayoutProps {
   children: ReactNode;
-  criteria: boolean;
 }
 
 const poppins = Poppins({
@@ -24,7 +21,7 @@ export const metadata: Metadata = {
   description: "ssrnew.wazl.in",
 };
 
-export default function RootLayout({ children, criteria }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -35,7 +32,7 @@ export default function RootLayout({ children, criteria }: RootLayoutProps) {
         )}
       >
         <div className="flex flex-col">
-          <ClientNavbarWrapper criteria={criteria} />
+          <NavbarPage />
           <main className="flex flex-1 flex-col bg-gray-50">{children}</main>
         </div>
       </body>

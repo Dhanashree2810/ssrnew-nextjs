@@ -209,6 +209,9 @@ body {
 .p-tabview-nav {
   background-color: rgb(243 244 246) !important;
 }
+/* .p-tabview-nav-link{
+  padding:21px 0;
+} */
 .activeProgress {
   position: relative;
 }
@@ -238,3 +241,15 @@ body {
 .activeProgressColor::before{
   background-color: rgb(22 101 52);
 }
+
+/* 
+.stepContent{
+  position:relative;
+}
+.stepContent .stepBar{
+  width: 241px;
+  position: absolute;
+  top: 34%;
+  left: 204%;
+  transform: translate(-50%, -50%);
+} */
