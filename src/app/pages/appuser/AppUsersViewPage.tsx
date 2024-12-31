@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import { TabView, TabPanel } from 'primereact/tabview';
 import { format } from 'date-fns';
 import TooltipWithText from "@/components/custom/TooltipWithText";
 import Link from "next/link";
@@ -14,7 +13,11 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FaEdit } from "react-icons/fa";
 import ImgViewer from "@/components/custom/ImgViewer";
-
+import { Stepper } from "primereact/stepper";
+import { StepperPanel } from "primereact/stepperpanel";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; // PrimeReact Theme
+import "primereact/resources/primereact.min.css"; // PrimeReact Core CSS
+import "primeicons/primeicons.css"; // PrimeReact Icons CSS
 
 const parseImageAndSetPreview = (jsonString: any, setImagePreview: any) => {
   try {
@@ -30,7 +33,6 @@ const parseImageAndSetPreview = (jsonString: any, setImagePreview: any) => {
 
 
 export default function AppUsersViewPage(props: any) {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     id: '', name: '', firstName: '', lastName: '', mobile: '', mobileVerified: false,
@@ -46,6 +48,7 @@ export default function AppUsersViewPage(props: any) {
   const [visitingCardPreview, setVisitingCardPreview] = useState([]);
   const [chequePreview, setChequePreview] = useState([]);
   const [PhotoAttachmentPreview, setPhotoAttachmentPreview] = useState([]);
+  const stepperRef = useRef<any>(null);
 
   useEffect(() => {
     getAppUsersData();
@@ -89,15 +92,22 @@ export default function AppUsersViewPage(props: any) {
     }
   };
 
-  const getTabClassName = (index: any) =>
-    `flex items-center justify-center w-10 h-10 rounded-full border-2 ${activeIndex === index
-      ? 'bg-green-800 font-semibold text-white border-green-800'
-      : 'bg-gray-200 text-gray-600 border-gray-400'
-    }`;
 
-  const getTabLabelClassName = (index: any) =>
-    `text-center text-[12px] uppercase mt-2  ${activeIndex === index ? 'text-green-800 font-bold' : 'text-gray-600'
-    }`;
+
+
+  const [number, setNumber] = useState(0);
+
+  const increment = () => {
+    if(number<=3){
+      setNumber((prev) => prev + 1);
+      stepperRef.current.nextCallback();
+    }
+  };
+
+  const decrement = () => {
+    setNumber((prev) => (prev > 0 ? prev - 1 : 0));
+    stepperRef.current.prevCallback();
+  };
 
   return (
     <div className="relative flex flex-col h-screen">
@@ -116,21 +126,11 @@ export default function AppUsersViewPage(props: any) {
         <div className="flex flex-col border-none mb-10 pb-20 lg:pb-20 lg:mb-20">
           <div className="container mx-auto">
             <div className="w-full">
-              <TabView
-                activeIndex={activeIndex}
-                onTabChange={(e) => setActiveIndex(e.index)}>
+              <Stepper ref={stepperRef}  headerPosition="bottom">
 
-                <TabPanel
-                  className=""
-                  header={
-                    <div className="flex justify-center items-center text-center w-full">
-                      <div className="flex flex-col justify-center items-center">
-                        <div className={getTabClassName(0)}>1</div>
-                        <div className={getTabLabelClassName(0)}>Access Details</div>
-                      </div>
-                    </div>
-                  }
-                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 0 ? '' : 'p-disabled'}`}>
+                <StepperPanel header="Access Details">
+
+
                   <div className="p-2">
                     <input type="hidden" name="id" value={formData.id} />
                     <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
@@ -190,18 +190,11 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   </div>
-                </TabPanel>
+                </StepperPanel>
 
-                <TabPanel
-                  header={
-                    <div className="flex justify-center w-full">
-                      <div className="flex flex-col items-center flex-1">
-                        <div className={getTabClassName(1)}>2</div>
-                        <div className={getTabLabelClassName(1)}>Shop Details</div>
-                      </div>
-                    </div>
-                  }
-                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 1 ? '' : 'p-disabled'}`}>
+                <StepperPanel header="Shop Details">
+
+
                   <div className="p-2">
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
@@ -247,18 +240,10 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   </div>
-                </TabPanel>
+                </StepperPanel>
 
-                <TabPanel
-                  header={
-                    <div className="flex justify-center w-full">
-                      <div className="flex flex-col items-center flex-1">
-                        <div className={getTabClassName(2)}>3</div>
-                        <div className={getTabLabelClassName(2)}>Shop Address</div>
-                      </div>
-                    </div>
-                  }
-                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 2 ? '' : 'p-disabled'}`}>
+                <StepperPanel header="Shop Address">
+
                   <div className="p-2">
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
@@ -314,19 +299,12 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   </div>
-                </TabPanel>
+                </StepperPanel>
 
                 {/* Step 4 */}
-                <TabPanel
-                  header={
-                    <div className="flex justify-center w-full">
-                      <div className="flex flex-col items-center flex-1">
-                        <div className={getTabClassName(3)}>4</div>
-                        <div className={getTabLabelClassName(3)}>Verify Shop</div>
-                      </div>
-                    </div>
-                  }
-                  headerClassName={`sticky top-[4rem] z-40 flex-1 ${activeIndex === 3 ? '' : 'p-disabled'}`}>
+                <StepperPanel header="Verify Shop">
+
+
                   <div className="p-2">
                     <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 pb-5">
                       <div className="flex flex-col bg-white bg-opacity-80 p-5 h-full border border-dark border-opacity-5 rounded-md">
@@ -500,8 +478,8 @@ export default function AppUsersViewPage(props: any) {
                       </div>
                     </div>
                   </div>
-                </TabPanel>
-              </TabView>
+                </StepperPanel>
+              </Stepper>
             </div>
           </div>
         </div>
@@ -509,48 +487,31 @@ export default function AppUsersViewPage(props: any) {
 
       <div className="fixed bottom-0 w-full bg-white shadow-md mt-10 py-4 px-5">
         <div className="flex justify-between">
-          {activeIndex === 0 && (
+          {number > 0 &&(
+            <div className="flex space-x-4">
+              <Button
+                type="button"
+                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
+                onClick={decrement}
+              >
+                <IoIosArrowBack size={15} className="text-green-800" />
+                <span>Previous</span>
+              </Button>
+
+            </div>
+          )}
+          {number < 3 && (
             <Button
               type="button"
-              className="bg-green-800 text-white font-semibold text-[15px] space-x-2"
-              onClick={() => setActiveIndex(activeIndex + 1)}
+              className="bg-green-800 text-white font-semibold text-[15px] flex items-center space-x-2"
+              onClick={increment}
             >
               <span>Next</span>
               <IoIosArrowForward size={15} className="text-white" />
             </Button>
           )}
-
-          {(activeIndex === 1 || activeIndex === 2) && (
+          {number == 3 && (
             <div className="flex space-x-4">
-              <Button
-                type="button"
-                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
-                onClick={() => setActiveIndex(activeIndex - 1)}
-              >
-                <IoIosArrowBack size={15} className="text-green-800" />
-                <span>Previous</span>
-              </Button>
-              <Button
-                type="button"
-                className="bg-green-800 text-white font-semibold text-[15px] flex items-center space-x-2"
-                onClick={() => setActiveIndex(activeIndex + 1)}
-              >
-                <span>Next</span>
-                <IoIosArrowForward size={15} className="text-white" />
-              </Button>
-            </div>
-          )}
-
-          {activeIndex === 3 && (
-            <div className="flex space-x-4">
-              <Button
-                type="button"
-                className="bg-gray-50 text-green-800 border-2 border-green-800 font-semibold text-[15px] flex items-center space-x-2"
-                onClick={() => setActiveIndex(activeIndex - 1)}
-              >
-                <IoIosArrowBack size={15} className="text-green-800" />
-                <span>Previous</span>
-              </Button>
               <Link href={`/appuser/edit/${formData.id}`} passHref>
                 <Button
                   type="button"
@@ -564,6 +525,6 @@ export default function AppUsersViewPage(props: any) {
           )}
         </div>
       </div>
-    </div>
-  );
+    </div>
+  );
 }

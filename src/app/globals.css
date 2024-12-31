@@ -2,7 +2,9 @@
 
 @import "primereact/resources/themes/lara-light-blue/theme.css"
   layer(primereact);
-
+  @import 'primereact/resources/themes/lara-light-indigo/theme.css'; /* or another theme */
+  @import 'primereact/resources/primereact.min.css';
+  @import 'primeicons/primeicons.css';
 @layer tailwind-base {
   @tailwind base;
 }
@@ -209,9 +211,7 @@ body {
 .p-tabview-nav {
   background-color: rgb(243 244 246) !important;
 }
-/* .p-tabview-nav-link{
-  padding:21px 0;
-} */
+
 .activeProgress {
   position: relative;
 }
@@ -239,17 +239,31 @@ body {
 }
 .activeProgressColor::after,
 .activeProgressColor::before{
-  background-color: rgb(22 101 52);
+  background-color: rgb(22 101 52)  !important;
 }
 
-/* 
-.stepContent{
-  position:relative;
+.p-stepper .p-stepper-header:has( ~ .p-highlight) .p-stepper-action .p-stepper-number{
+  background-color: #2a7624 !important;
+color:#ffffff !important;
 }
-.stepContent .stepBar{
-  width: 241px;
-  position: absolute;
-  top: 34%;
-  left: 204%;
-  transform: translate(-50%, -50%);
-} */
+
+.p-stepper-header .p-highlight .p-stepper-header-bottom{
+  background-color: #2a7624 !important;
+
+}
+.p-stepper-action .p-component{
+  background-color: #2a7624 !important;
+
+}
+.p-stepper-header:has(.p-highlight) .p-stepper-separator .p-stepper-number {
+  background-color: #2a7624 !important; 
+}
+.p-stepper .p-stepper-header.p-highlight .p-stepper-number {
+background-color: #2a7624 !important; 
+
+}
+.p-stepper .p-stepper-header:has( ~ .p-highlight) .p-stepper-separator{
+  background-color: #2a7624 !important; 
+
+}
+
